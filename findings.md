@@ -183,7 +183,9 @@ System-level inspection is required before reporting this as verified security w
 - Linux file and directory permission inspection.
 - Sudo configuration and privileged group review.
 
-**Suggested Evidence:** `screenshots/permissions-audit.png` (to be added)
+**Suggested Evidence:** 
+- `screenshots/permissions-audit.png` (to be added)
+- `screenshots/sudo-and-groups-review.png` (to be added)
 
 **Verification Status:** Pending Evidence
 
@@ -217,7 +219,9 @@ System-level inspection is required before reporting this as verified security w
 - Linux security hardening checklist.
 - Documentation of implemented security controls.
 
-**Suggested Evidence:** `screenshots/hardening-checklist.png` (to be added)
+**Suggested Evidence:** 
+- `screenshots/hardening-checklist.png` (to be added)
+- `screenshots/hardening-validation.png` (to be added)
 
 **Verification Status:** Pending Review
 
