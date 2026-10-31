@@ -35,13 +35,9 @@ Recommended security improvements and remediation guidance are documented in har
 
 ### Finding F-01 — Telnet Service Exposure
 
-**Observation:** An earlier assessment summary reported TCP port 23 (Telnet) was open on the target machine.
+**Observation:** Nmap service-version detection identified `Linux telnetd` listening on TCP port 23 on the target machine.
 
-Telnet is an insecure remote administration protocol because communication, including authentication information, is transmitted without encryption by default.
-
-The original Nmap output must be retained or the service must be rescanned to confirm this observation.
-
-**Risk:** Provisional
+**Risk:** Provisional — pending further assessment.
 
 **Potential Impact:** 
 - Credentials may be exposed to network interception.
@@ -57,7 +53,9 @@ The original Nmap output must be retained or the service must be rescanned to co
 - Original Nmap scan output showing TCP port 23
 - Service detection results confirming the Telnet service.
 
-**Suggested Evidence:** evidence/telnet-scan.png
+**Suggested Evidence:** 
+- `scans/nmap-service-versions.txt`
+- `screenshots/telnet-scan.png` (to be added)
 
 **Verification Status:** Pending Evidence
 
@@ -89,7 +87,7 @@ Further investigation is required before classifying this as a confirmed finding
 - Verified authentication configuration.
 - Authorized authentication test results, where applicable.
 
-**Suggested Evidence:** evidence/authentication-review.png
+**Suggested Evidence:** `screenshots/authentication-review.png` (to be added)
 
 **Verification Status:** Pending Evidence 
 
@@ -97,13 +95,11 @@ Further investigation is required before classifying this as a confirmed finding
 
 ### Finding F-03 — Excessive Network Service Exposure
 
-**Observation:** The earlier assessment summary indicated that multiple network services were exposed on the target machine.
+**Observation:** Nmap identified 22 open TCP ports on the Metasploitable2 target (`192.168.56.104`). 
 
-The exact ports, service names, and service versions have not yet been documented in this report.
+The detected services include FTP, SSH, Telnet, SMTP, SMB, remote login services, database services and web services.
 
-Additional Nmap enumeration is required to establish the complete list of exposed services. 
-
-**Risk:** Provisional
+**Risk:** Provisional — pending further assessment.
 
 **Potential Impact:**
 - Unnecessary services increase the system's attack surface.
@@ -111,17 +107,17 @@ Additional Nmap enumeration is required to establish the complete list of expose
 - Poorly configured services may provide unauthorized access opportunities.
 
 **Recommendation:**
-- Inventory all running network services.
+- Review all exposed services and determine whether they are required.
 - Disable services that are not required.
-- Restrict necessary services through firewall rules.
+- Restrict access to necessary services through firewall rules.
 
 **Evidence Required:**
 - Nmap port scanning results.
 - Service enumeration output identifying exposed ports and services.
 
 **Suggested Evidence:**
-- scans/nmap-results.txt
-- evidence/service-enumeration.png
+- `scans/nmap-service-versions.txt`
+- `screenshots/service-enumeration.png` (to be added)
 
 **Verification Status:** Pending Evidence
 
@@ -152,7 +148,9 @@ Service version detection alone does not establish that a component contains an 
 - Nmap service version detection results.
 - Installed software or package inventory.
 
-**Suggested Evidence:** scans/software-versions.txt
+**Suggested Evidence:**
+- `scans/nmap-service-versions.txt`
+-  `screenshots/software-versions.png` (to be added)
 
 **Verification Status:** Pending Evidence
 
@@ -185,7 +183,7 @@ System-level inspection is required before reporting this as verified security w
 - Linux file and directory permission inspection.
 - Sudo configuration and privileged group review.
 
-**Suggested Evidence:** evidence/permissions-audit.png
+**Suggested Evidence:** `screenshots/permissions-audit.png` (to be added)
 
 **Verification Status:** Pending Evidence
 
@@ -219,7 +217,7 @@ System-level inspection is required before reporting this as verified security w
 - Linux security hardening checklist.
 - Documentation of implemented security controls.
 
-**Suggested Evidence:** evidence/hardening-checklist.png
+**Suggested Evidence:** `screenshots/hardening-checklist.png` (to be added)
 
 **Verification Status:** Pending Review
 
