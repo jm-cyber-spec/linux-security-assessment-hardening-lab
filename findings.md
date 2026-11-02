@@ -158,25 +158,26 @@ Service version detection alone does not establish that a component contains an 
 
 ### Finding F-05 — Privilege Separation 
 
-**Observation:** Service privilege separation and Linux permission configurations were identified as areas requiring further investigation.
+**Observation:** 
 
-However, no specific service running with excessive privileges or incorrectly configured permission has yet been confirmed.
+The assessment identified several privilege-separation concerns on the Metasploitable2 target:
+- The `msfadmin` account has unrestricted sudo privileges, as confirmed by the output of  `sudo -l`, which displays (`(ALL)ALL`). This allows the account to execute commands with root privileges.
+- The `etc/inetd.conf` configuration contains legacy remote access services (`rsh`,`rlogin`, and `rexec`) configured to run as `root` privileges.
+- The `ingreslock` service is configured to invoke `/bin/bash` with `root` privileges. Associating a command shell with a network sevice represents a significant service-configuration weakness.
+- The `root` and `msfadmin` accounts have password maximum age settings of 99,999 days, effectively allowing passwords to remain unchanged for an extended period.
 
-System-level inspection is required before reporting this as verified security weakness.
-
-**Risk:** Unassessed pending verification
+**Risk:** Provisional — further assessment required
 
 **Potential Impact:** 
-- Compromised services may provide excessive system access.
-- Incorrect file permissions may expose sensitive system resources.
-- Excessive administrative privileges may increase the impact of unauthorized access.
+- If one of these exposed services is compromised, its root-level execution context could allow an attacker to execute commands with administrative privileges.
+- Additionally, compromise of the `msfadmin` account could provide administrative access through its unrestricted `sudo` permissions. The presence of legacy remote-access services may also increase the attack surface, particularly where insecure authentication or communication mechanisms are involved. 
 
 **Recommendation:**
 - Review service process ownership and execution privileges.
-- Use dedicated least-privileged service accounts where supported.
-- Audit sudo permissions and privileged groups.
-- Review sensitive file and directory permissions.
-- Apply the principle of least privilege across the system.
+- Avoid configuring network-facing services to execute with root privileges unless strictly necessary.
+- Disbale legacy remote access services where they are not required.
+- Prefer SSH for secure remote communication. 
+- Apply the principle of least privilege to all user accounts and services.
 
 **Evidence Required:**
 - Service process ownership information.
@@ -184,10 +185,14 @@ System-level inspection is required before reporting this as verified security w
 - Sudo configuration and privileged group review.
 
 **Suggested Evidence:** 
+- `screenshots/sudo-privileges.png`
+- `screenshots/legacy-services-configuration.png`
 - `screenshots/permissions-audit.png` (to be added)
 - `screenshots/sudo-and-groups-review.png` (to be added)
 
-**Verification Status:** Pending Evidence
+**Verification Status:** 
+
+The sudo privileges and service configuration were inspected. No remediation was performed, and successful remote exploitation or root access was not tested.
 
 ---
 
