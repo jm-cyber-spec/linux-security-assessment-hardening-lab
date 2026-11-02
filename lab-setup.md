@@ -27,7 +27,7 @@ Network configuration:
 - Adapter 1: NAT, for internet access and updates.
 - Adapter 2: Host-only, for communication with the isolated lab target.
 
-#### 2. Metasplotable2 -- Target MAchine
+#### 2. Metasploitable2 -- Target MAchine
 Purpose:
 - Provide an intentionally vulnerable Linux system for security assessment.
 - Demonstrate exposed services and insecure configurations.
@@ -35,7 +35,7 @@ Purpose:
 
 Network configuration:
 - Adapter 1: Host-only, connected to the same host only network as Kali Linux.
-- Addititonal adapters: Disabled for this isolated assessment.
+- Additional adapters: Disabled for this isolated assessment.
 - Internet access: Not intentionally provided.
 
 Metasplotitable2 must not be exposed to untrusted networks.
@@ -64,7 +64,7 @@ Kali Linux uses a separate NAT adapter for internet access and updates. Metasplo
 This architecture demonstrates several important security principles:
 - Separates the lab target from the normal network environment.
 - Restricts assessment activities to an authorized environment.
-- Uses one VM for assesment and another as the target.
+- Uses one VM for assessment and another as the target.
 - Minimizes the risk of exposing an intentionally vulnerable system.
 
 ---
