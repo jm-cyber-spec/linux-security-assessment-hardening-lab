@@ -46,7 +46,7 @@ This document distinguishes commands executed during the assessment from command
 
 **2.5 Save Nmap Results**
 
-`nmap -sV 192.168.56.104 -oN scans/nmap-results.txt`
+`nmap -sV 192.168.56.104 -oN scans/nmap-service-versions.txt`
 
 **Purpose:** Saves the scan output in normal text format.
 
@@ -130,10 +130,10 @@ This document distinguishes commands executed during the assessment from command
 Supporting scan outputs and screenshots will be added to the repository as the assessment progresses.
 
 Recommended evidence locations:
-- `scans/nmap-results.txt`
-- `evidence/network-configuration.png`
-- `evidence/service-enumeration.png`
-- `evidence/permissions-review.png`
+- `scans/nmap-service-versions.txt`
+- `screenshots/network-configuration.png`(Upload pending)
+- `screenshots/service-enumeration.png` (Upload pending)
+- `screenshots/permissions-review.png` (Upload pending)
 
 Actual results should be documented alongside the relevant findings in `findings.md`
 
