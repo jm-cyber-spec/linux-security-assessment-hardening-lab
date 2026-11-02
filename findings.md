@@ -57,7 +57,7 @@ Recommended security improvements and remediation guidance are documented in har
 - `scans/nmap-service-versions.txt`
 - `screenshots/telnet-scan.png` (to be added)
 
-**Verification Status:** Pending Evidence
+**Verification Status:** Service exposure was confirmed by Nmap scan, while configuration and security impact remain under review.
 
 ---
 
@@ -119,17 +119,28 @@ The detected services include FTP, SSH, Telnet, SMTP, SMB, remote login services
 - `scans/nmap-service-versions.txt`
 - `screenshots/service-enumeration.png` (to be added)
 
-**Verification Status:** Pending Evidence
+**Verification Status:** Service exposure was confirmed by Nmap scan, while configuration and security impact remain under review.
 
 ---
 
 ### Finding F-04 — Potentially Outdated Software 
 
-**Observation:** Older software versions were reportedly identified during the initial service detection process.
+**Observation:**
 
-However, the specific software products, installed versions, and corresponding security advisories have not yet been recorded.
+An Nmap service-version scan of the Metasploitable2 target(`192.168.56.104`) identified several older software versions.
 
-Service version detection alone does not establish that a component contains an exploitable vulnerability.
+Port | Service | Detected Version
+|--|--|--|
+|21/tcp | FTP | vsftpd 2.3.4|
+|22/tcp | SSH | OpenSSH 4.7p1 Debian 8ubuntu1|
+|80/tcp | HTTP | Apache HTTP Server 2.2.8|
+|2121/tcp |FTP | ProFTPD 1.3.1|
+|3306/tcp | MySQL | MySQL 5.0.5.1a-3ubuntu5|
+|5432/tcp | PostgreSQL | PostgreSQL 8.3.0-8.3.7(version range reported by Nmap)|
+
+These results indicate potentially outdated components that require further investigation.
+
+Nmap Service version detection alone does not establish that a component contains an exploitable vulnerability.
 
 **Risk:** Unassessed pending verification
 
@@ -139,10 +150,10 @@ Service version detection alone does not establish that a component contains an 
 - Vulnerable services may increase the likelihood of system compromise.
 
 **Recommendation:**
-- Identify installed software and service versions.
-- Compare versions against vendor security advisories.
+- Verify installed software and service versions.
+- Compare identified versions against vendor security advisories.
 - Review relevant CVEs using trusted vulnerability databases.
-- Apply available security updates.
+- Apply available security updates or replace unsupported components where appropriate.
 
 **Evidence Required:**
 - Nmap service version detection results.
@@ -152,7 +163,9 @@ Service version detection alone does not establish that a component contains an 
 - `scans/nmap-service-versions.txt`
 -  `screenshots/software-versions.png` (to be added)
 
-**Verification Status:** Pending Evidence
+**Verification Status:** 
+
+Service versions were identified through Nmap scanning. Installed package versions, security patch status, and applicable CVEs has not yet been verified.
 
 ---
 
@@ -162,8 +175,8 @@ Service version detection alone does not establish that a component contains an 
 
 The assessment identified several privilege-separation concerns on the Metasploitable2 target:
 - The `msfadmin` account has unrestricted sudo privileges, as confirmed by the output of  `sudo -l`, which displays (`(ALL)ALL`). This allows the account to execute commands with root privileges.
-- The `etc/inetd.conf` configuration contains legacy remote access services (`rsh`,`rlogin`, and `rexec`) configured to run as `root` privileges.
-- The `ingreslock` service is configured to invoke `/bin/bash` with `root` privileges. Associating a command shell with a network sevice represents a significant service-configuration weakness.
+- The `/etc/inetd.conf` configuration contains legacy remote access services (`rsh`,`rlogin`, and `rexec`) configured to run as `root`.
+- The `ingreslock` service is configured to launch `/bin/bash` with `root`.
 - The `root` and `msfadmin` accounts have password maximum age settings of 99,999 days, effectively allowing passwords to remain unchanged for an extended period.
 
 **Risk:** Provisional — further assessment required
@@ -175,7 +188,7 @@ The assessment identified several privilege-separation concerns on the Metasploi
 **Recommendation:**
 - Review service process ownership and execution privileges.
 - Avoid configuring network-facing services to execute with root privileges unless strictly necessary.
-- Disbale legacy remote access services where they are not required.
+- Disable legacy remote access services where they are not required.
 - Prefer SSH for secure remote communication. 
 - Apply the principle of least privilege to all user accounts and services.
 
@@ -192,7 +205,7 @@ The assessment identified several privilege-separation concerns on the Metasploi
 
 **Verification Status:** 
 
-The sudo privileges and service configuration were inspected. No remediation was performed, and successful remote exploitation or root access was not tested.
+The sudo privileges and service configuration were inspected. No successful remote root access or privilege-escalation was tested. No remediation was performed 
 
 ---
 
