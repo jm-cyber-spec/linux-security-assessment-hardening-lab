@@ -3,7 +3,7 @@
 ### 1. Purpose
 This document outlines recommended security improvements based on the assessment areas identified in findings.md
 
-The recommendations aim to improve system security, reduce unnecessary exposure, strengthen access controls, and support security monitroring.
+The recommendations aim to improve system security, reduce unnecessary exposure, strengthen access controls, and support security monitoring.
 
 These recommendations are proposed actions and should not be considered implemented until the changes have been performed and validated.
 
@@ -84,7 +84,7 @@ These recommendations are proposed actions and should not be considered implemen
 - Confirm applicable security updates have been applied.
 - Reassess previously identified software vulnerabilities.
 
-**2.5 Apply the Principle of LEast Privilege**
+**2.5 Apply the Principle of Least Privilege**
 
 **Related Finding:** F-05 — Potential Privilege Separation Weaknesses 
 
@@ -111,7 +111,7 @@ These recommendations are proposed actions and should not be considered implemen
 
 **Recommendations:**
 - Establish a documented Linux security baseline.
-- Review authentication, permissions, services,, and access restrictions.
+- Review authentication, permissions, services, and access restrictions.
 - Maintain regular security updates.
 - Enable appropriate logging and monitoring.
 - Use the CIS Linux Benchmarks as a hardening reference where applicable.
