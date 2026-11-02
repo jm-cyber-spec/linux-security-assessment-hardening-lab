@@ -7,7 +7,7 @@ The objective is to develop practical cybersecurity skills in network service di
 
 **Objectives**
 * Identify exposed network services using Nmap
-* Understand Linux users, groups, file permissions, and priviledge separation.
+* Understand Linux users, groups, file permissions, and privilege separation.
 * Identify potential security risks associated with insecure configurations.
 * Develop practical Linux hardening recommendations.
 * Document findings through evidence-based security reporting.
@@ -32,6 +32,7 @@ Additional tools will be documented when their use in this project is confirmed.
 * findings.md -- Security observations, evidence, impact, and validation status.
 * hardening-recommendations.md -- Recommended defensive improvements and remediation priorities.
 * commands-used.md -- Commands used and explanations.
+* scans/ -- Nmap output files
 * screenshots/ -- Supporting screenshots and sanitized evidence.
 
 **Methodology**
