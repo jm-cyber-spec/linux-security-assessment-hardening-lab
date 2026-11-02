@@ -61,35 +61,38 @@ Recommended security improvements and remediation guidance are documented in har
 
 ---
 
-### Finding F-02 — Weak or Default Credentials 
+### Finding F-02 — Authentication and Password Policy
 
-**Observation:** Weak or default credentials were identified as a potential security concern during the assessment.
+**Observation:**
 
-However, the specific account, authentication configuration, and verification results have not yet been documented.
+An authentication configuration review of the Metasploitable2 target ("192.168.56.104") identified the following:
+- The "root" and "msfadmin" accounts have passwords set, with last recorded password changes on 18 May 2010 and 16 March 2010, respectively.
+- Both accounts have a maximum password age of 99,999 days, effectively disabling routine password expiry through this setting.
+- `/etc/login.defs` specifies `PASS_MAX_DAYS 99999`, `PASS_MIN_DAYS 0`, and `PASS_WARN_AGE 7`.
+- The active `/etc/pam.d/common-password` configuration contains `pam_unix.so nullok obscure md5`, indicating legacy MD5-based password hashing is configured, basic password-strength checks are enabled, and empty passwords are permitted under applicable PAM conditions.
+- `/etc/pam.d/common-auth` uses `pam_unix.so nullock_secure`. No `pam_tally` or `pam_faillock` rule was observed in this file.
 
-Further investigation is required before classifying this as a confirmed finding.
+**Risk:** Provisional — further assessment required.
 
-**Risk:** Unassessed pending verification
-
-**Potential Impact:** 
-- Unauthorized users may gain access through predictable credentials.
-- Compromised accounts may expose sensitive system information.
-- Privileged account compromise may result in broader system access.
+**Potential Impact:**
+- Weak password-management controls can increase the likelihood of unauthorized access.
+- Legacy password hashing and permissive authentication settings may increase risk if credentials are exposed or accounts are misconfigured.
 
 **Recommendation:**
-- Replace default credentials with strong, unique passwords.
-- Enforce an appropriate password policy.
-- Disable unnecessary or unused accounts.
+- Review password-aging requirements and account security policies.
+- Use modern, supported password-hashing algorithms.
+- Review whether empty-password authentication should be permitted.
+- Assess account-lockout or login rate-limiting protections.
+- Enforce appropriate password-strength requirements.
 - Restrict privileged account access.
-- Implement multifactor authentication where supported.
 
-**Evidence Required:**
-- Verified authentication configuration.
-- Authorized authentication test results, where applicable.
+**Suggested Evidence:**
+- `screenshots/password-aging-policy.png`
+- `screenshots/password-policy-configuration.png`
+- `screenshots/authentication-configuration.png`
 
-**Suggested Evidence:** `screenshots/authentication-review.png` (to be added)
-
-**Verification Status:** Pending Evidence 
+**Verification Status:**
+Password status, password-aging settings, and selected PAM configuration files were inspected. Actual password strength, default credential usage, account-lockout behavior across all authentication services, and existing password hash formats were not verified. No password guessing or exploitation was performed.
 
 ---
 
