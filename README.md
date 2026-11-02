@@ -1,6 +1,7 @@
 # Linux Security Assessment and Hardening Lab
 
 **Project Overview**
+
 This project documents a hands-on Linux security assessment using Kali Linux and Metasploitable2 in a controlled virtual lab environment.
 
 The objective is to develop practical cybersecurity skills in network service discovery, Linux security configuration review, identification of potential security weaknesses, and defensive hardening recommendations.
@@ -21,19 +22,19 @@ The objective is to develop practical cybersecurity skills in network service di
 See lab-setup.md for setup instructions and network configuration.
 
 **Tools**
-* Nmap -- Network and service discovery.
-* Linux command-line utilities -- System inspection and permission checks.
-* Oracle VirtualBox -- Virtual lab environment.
+* Nmap — Network and service discovery.
+* Linux command-line utilities — System inspection and permission checks.
+* Oracle VirtualBox — Virtual lab environment.
 
 Additional tools will be documented when their use in this project is confirmed.
 
 **Project Structure**
-* lab-setup.md -- Lab setup and network configuration.
-* findings.md -- Security observations, evidence, impact, and validation status.
-* hardening-recommendations.md -- Recommended defensive improvements and remediation priorities.
-* commands-used.md -- Commands used and explanations.
-* scans/ -- Nmap output files
-* screenshots/ -- Supporting screenshots and sanitized evidence.
+* lab-setup.md — Lab setup and network configuration.
+* findings.md — Security observations, evidence, impact, and validation status.
+* hardening-recommendations.md — Recommended defensive improvements and remediation priorities.
+* commands-used.md — Commands used and explanations.
+* scans/ — Nmap output files
+* screenshots/ — Supporting screenshots and sanitized evidence.
 
 **Methodology**
 * Establish the lab environment and define the assessment scope.
