@@ -187,7 +187,7 @@ The package comparison supports a finding of a missing documented security updat
 
 **SHA-256:**
 
-01c115bd2b95eee4327f08066381121597891e5d9fba9475e1cdb2874aafa205
+`01c115bd2b95eee4327f08066381121597891e5d9fba9475e1cdb2874aafa205`
 
 **Relevant CVE:** CVE-2011-2523 (applicability unverified)
 
@@ -208,14 +208,45 @@ The reported version alone does not establish that the backdoor is present. The 
 **Supporting Evidence:**
 - `screenshots/vsftpd-bianry-verification.png`
 
-#### F-04.3 — Remaining Software Components
+#### F-04.3 — ProFTPD 1.3.1: Service and Configuration Verification
 
-The following services require additional package-version and security-advisory verification:
+**Service:** FTP (TCP port 2121)
 
-- OpenSSH — installed package version 1:4.7p1-8ubuntu1 previously confirmed; advisory applicability requires further review.
-- ProFTPD 1.3.1 — pending local version verification.
-- MySQL 5.0.51a — pending local package verification.
-- PostgreSQL 8.3.x — pending local package verification.
+**Installed Package:** proftpd 1.3.1-6ubuntu1
+
+**Executable:** `/usr/sbin/proftpd`
+
+**Executable Version:** 1.3.1
+
+**Relevant CVE for Further Investigation:** `CVE-2010-4652` (applicability unconfirmed)
+
+**Assessment:**
+
+Nmap identified ProFTPD 1.3.1 on TCP port 2121. Local package inspection confirmed that proftpd version 1.3.1-6ubuntu1 is installed.
+
+Executable inspection independently confirmed ProFTPD version 1.3.1. Process and network-listener inspection confirmed that the ProFTPD daemon (`PID 4568` at the time of inspection) was accepting connections on TCP port 2121.
+
+The main configuration includes `/etc/proftpd/modules.conf`, which contains uncommented `LoadModule` directives for `mod_sql.c`, `mod_sql_mysql.c`, and `mod_sql_postgres.c`.
+
+A configuration syntax test completed successfully when executed with privileges.
+
+A search of `/etc/proftpd/` did not identify uncommented SQL authentication or database-connection directives matching the patterns tested. The direct inclusion of `/etc/proftpd/sql.conf` in the main configuration was commented out.
+
+`CVE-2010-4652` is associated with ProFTPD's SQL module. The module loading configuration warrants further investigation, but the available evidence does not establish whether the vulnerability is applicable to this installed package or its active configuration.
+
+**Potential Impact:**
+
+If an applicable vulnerability is present and its prerequisites are satisfied, the FTP service could expose the system to unauthorized access, service disruption, or other security consequences depending on the specific vulnerability. 
+
+**Supporting Evidence:**
+- `scans/nmap-service-versions.txt`
+- `screenshots/proftpd-verification.png`
+- Additional configuration inspection results (Verified in terminal; screenshots not yet collected).
+
+**Verification Status:**
+- Installed package, executable version, configuration syntax, and listening service (verified).
+- SQL module runtime state, security-patch applicability, and CVE exploitability remain (unconfirmed).
+- No exploitation or remediation was performed. 
 
 **Overall Risk:** Provisional — additional components under review. 
 
@@ -238,26 +269,31 @@ The following services require additional package-version and security-advisory 
 - Apache package inventory and advisory comparison (verified).
 - vsftpd executable version and SHA-256 fingerprint (verified).
 - Remaining package and security-advisory checks (pending).
+- ProFTPD package, executable, configuration, and listening-port verification (completed; screenshots pending).
 
 **Evidence:**
 - `scans/nmap-service-versions.txt`
 - `screenshots/ubuntu-version.png`
 - `screenshots/apache-package-versions.png`
 - `screenshots/vsftp-binary-verification.png`
+- `screenshots/proftpd-verification.png`
 -  `screenshots/software-versions.png` (to be added)
 
 **References:**
 - `https://ubuntu.com/security/notices/USN-1199-1`
 - `https://ubuntu.com/security/CVE-2011-3192`
 - `https://nvd.nist.gov/vuln/detail/CVE-2011-2523`
+- `https://nvd.nist.gov/vuln/detail/CVE-2010-4652`
 
 **Overall Verification Status:** 
 
 The Ubuntu 8.04 operating system release and installed Apache package versions were verified locally. The installed `apache2-mpm-prefork` package predates the documented security fix for `CVE-2011-3192`.
 
-The vsftpd executable version and SHA-256 fingerprint were verified. Applicapability of CVE-2011-2523 remains unconfirmed.
+The vsftpd executable version and SHA-256 fingerprint were verified. Applicapability of `CVE-2011-2523` remains unconfirmed.
 
 OpenSSH package identification has been completed, while further advisory verification and assessment of the remaining services are pending.
+
+ProFTPD version 1.3.1 and package version 1.3.1-6ubuntu1 were verified locally. The running daemon was confirmed listening on TCP port 2121. SQL module loading directives were identified, but `CVE-2010-4652` applicability remains unconfirmed.
 
 No exploitation or remediation was performed.
 
