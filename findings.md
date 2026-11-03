@@ -138,37 +138,70 @@ Port | Service | Detected Version
 |22/tcp | SSH | OpenSSH 4.7p1 Debian 8ubuntu1|
 |80/tcp | HTTP | Apache HTTP Server 2.2.8|
 |2121/tcp |FTP | ProFTPD 1.3.1|
-|3306/tcp | MySQL | MySQL 5.0.5.1a-3ubuntu5|
+|3306/tcp | MySQL | MySQL 5.0.51a-3ubuntu5|
 |5432/tcp | PostgreSQL | PostgreSQL 8.3.0-8.3.7(version range reported by Nmap)|
 
 These results indicate potentially outdated components that require further investigation.
 
 Nmap Service version detection alone does not establish that a component contains an exploitable vulnerability.
 
-**Risk:** Unassessed pending verification
+### Verified Security Advisory — Apache HTTP Server 
+
+**Operating System:** Ubuntu 8.04 LTS (Hardy)
+
+**Affected Component:** `apache2-mpm-prefork`
+
+**Installed Version:** `2.2.8-1ubuntu0.15`
+
+**Security Fix Version:** `2.2.8-1ubuntu0.21`
+
+**CVE:** CVE-2011-3192
+
+**Ubuntu Security Advisory:** USN-1199-1
+
+**Observation:** 
+
+Local Package inspection confirmed that `apache2-mpm-prefork` version `2.2.8-1ubuntu0.15` is installed on the Metasploitable2 target.
+
+Ubuntu Security Notice USN-1199-1 identifies `2.2.8-1ubuntu0.21` as the corrected package version for Ubuntu 8.04.
+
+The installed package predates the documented security update.
+
+**Risk:** Provisional — additional components under review. 
 
 **Potential Impact:**
+- `CVE-2011-3192` concerns Apache HTTP Server's handling of overlapping HTTP byte-range requests. A remote attacker may cause excessive resource consumption, potentially resulting in denial of service.
 - Unsupported software may no longer receive security updates.
 - Unpatched components may contain publicly documented vulnerabilities.
 - Vulnerable services may increase the likelihood of system compromise.
 
 **Recommendation:**
-- Verify installed software and service versions.
+- Verify installed software versions and security patch levels.
 - Compare identified versions against vendor security advisories.
 - Review relevant CVEs using trusted vulnerability databases.
-- Apply available security updates or replace unsupported components where appropriate.
+- Replace the unsupported operating system and services with supported alternatives.
+- Apply available security updates in an appropriately maintained environment.
 
 **Evidence Required:**
-- Nmap service version detection results.
-- Installed software or package inventory.
+- Nmap service version detection results identifying exposed services and their reported versions (collected).
+- Ubuntu operating system identification (verified).
+- Apache package inventory and advisory comparison (verified).
+- Installed package and security-update verification for remaining software components (pending).
 
 **Suggested Evidence:**
 - `scans/nmap-service-versions.txt`
+- `screenshots/ubuntu-version.png`
+- `screenshots/apache-package-versions.png`
 -  `screenshots/software-versions.png` (to be added)
+
+**References:**
+- `https://ubuntu.com/security/notices/USN-1199-1`
+- `https://ubuntu.com/security/CVE-2011-3192`
 
 **Verification Status:** 
 
-Service versions were identified through Nmap scanning. Installed package versions, security patch status, and applicable CVEs has not yet been verified.
+The Ubuntu 8.04 operating system release and installed Apache package versions were verified locally. The installed `apache2-mpm-prefork` package predates the security fix documented in `USN-1199-1` for `CVE-2011-3192`.
+Exploitability and manually applied patches were not verified. Other detected software components remain under review. No exploitation or remediation was performed.
 
 ---
 
