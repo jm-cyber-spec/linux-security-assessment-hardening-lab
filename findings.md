@@ -310,7 +310,7 @@ Actual exploitability depends on the affected functionality, user privileges, co
 
 The following services require further security assessment:
 
-|Port|Service|Current Verificatiom Status|
+|Port|Service|Current Verification Status|
 |--|--|--|
 |22/tcp|OpenSSH|Installed package version 1:4.7p1-8ubuntu1 verified locally; security advisory comparison and patch  applicability require further assessment.|
 |5432/tcp|PostgreSQL|Nmap detected PostgreSQL 8.3.0-8.3.7; installed package version and applicable security advisories have not yet been verified.|
