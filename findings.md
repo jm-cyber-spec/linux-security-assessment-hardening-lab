@@ -317,7 +317,7 @@ Actual exploitability depends on the affected functionality, user privileges, co
 
 **Verification Status:**
 - The installed MySQL package version, server executable version, and listening service (verified).
-- The installed package predates the security fix documented in USN-671-1. Manually applied patches and exploitability were not independently unconfirmed.
+- The installed package predates the security fix documented in USN-671-1. Manually applied patches and exploitability were not independently verified.
 - No exploitation or remediation was performed.</br>
 
 
@@ -377,9 +377,9 @@ The following services require further security assessment:
 
 The Ubuntu 8.04 operating system release and installed Apache package versions were verified locally.
 
-**Apache HTTP Server:** The installed `apache2-mpm-prefork` package version `2.2.81ubuntu0.15` predates the documented security fix `2.2.8-1ubuntu0.21` for CVE-2011-3192 in Ubuntu Security Notice USN-1199-1.
+**Apache HTTP Server:** The installed `apache2-mpm-prefork` package version `2.2.8-1ubuntu0.15` predates the documented security fix `2.2.8-1ubuntu0.21` for CVE-2011-3192 in Ubuntu Security Notice USN-1199-1.
 
-**vsftpd:** The executable reported version `2.3.4` and its SHA-256 fingerprint were verified. Applicability of CVE-2011-2523 remains unconfirmed because the executable has not been validated against a trusted refernce binary.
+**vsftpd:** The executable reported version `2.3.4` and its SHA-256 fingerprint were verified. Applicability of CVE-2011-2523 remains unconfirmed because the executable has not been validated against a trusted reference binary.
 
 **ProFTPD:** The installed package version `1.3.1-6ubuntu1` and executable version `1.3.1` and running service on TCP port 2121 were verified. SQL module-loading directives were identified, but CVE-2010-4652 applicability remains unconfirmed.
 
