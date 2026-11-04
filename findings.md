@@ -37,7 +37,7 @@ Recommended security improvements and remediation guidance are documented in har
 
 **Observation:** Nmap service-version detection identified `Linux telnetd` listening on TCP port 23 on the target machine.
 
-Local configuration inspection of `/etc/inetd.conf` also identified an uncommented Telnet service entry invoking `/usr/sbin/in.telnetd` through `/usr/sbin/tcpd`.
+Local inspection of `/etc/inetd.conf` on Metasploitable2 identified an uncommented Telnet service entry invoking `/usr/sbin/in.telnetd` through `/usr/sbin/tcpd`.
 
 The Nmap observation supports that Telnet is exposed on TCP port 23. No Telnet authentication attempt or credential interception was performed.
 
@@ -59,9 +59,10 @@ The Nmap observation supports that Telnet is exposed on TCP port 23. No Telnet a
 
 **Suggested Evidence:** 
 - `scans/nmap-service-versions.txt`
+- `screenshots/legacy-services-configuration.png`
 - `screenshots/telnet-scan.png` (to be added)
 
-**Verification Status:** Nmap service detection and local configuration inspection were completed
+**Verification Status:** Nmap confirmed TCP port 23 was open and identified the Telnet service. Local configuration inspection also identified an enabled Telnet entry in `etc/inetd.conf`. No exploitation or remediation was performed. 
 
 ---
 
