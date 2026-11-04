@@ -70,7 +70,7 @@ An authentication configuration review of the Metasploitable2 target ("192.168.5
 - Both accounts have a maximum password age of 99,999 days, effectively disabling routine password expiry through this setting.
 - `/etc/login.defs` specifies `PASS_MAX_DAYS 99999`, `PASS_MIN_DAYS 0`, and `PASS_WARN_AGE 7`.
 - The active `/etc/pam.d/common-password` configuration contains `pam_unix.so nullok obscure md5`, indicating legacy MD5-based password hashing is configured, basic password-strength checks are enabled, and empty passwords are permitted under applicable PAM conditions.
-- `/etc/pam.d/common-auth` uses `pam_unix.so nullock_secure`. No `pam_tally` or `pam_faillock` rule was observed in this file.
+- `/etc/pam.d/common-auth` uses `pam_unix.so nullok_secure`. No `pam_tally` or `pam_faillock` rule was observed in this file.
 
 **Risk:** Provisional — further assessment required.
 
@@ -143,7 +143,8 @@ Port | Service | Detected Version
 
 These results indicate potentially outdated components that require further investigation.
 
-Nmap Service version detection alone does not establish that a component contains an exploitable vulnerability.
+Nmap service-version detection alone does not establish that a component contains an exploitable vulnerability.
+
 
 #### F-04.1 — Apache HTTP Server: Security Update Assessment 
 
@@ -161,7 +162,7 @@ Nmap Service version detection alone does not establish that a component contain
 
 **Assessment:**
 
-Local Package inspection confirmed that `apache2-mpm-prefork` version `2.2.8-1ubuntu0.15` is installed on the Metasploitable2 target.
+Local package inspection confirmed that `apache2-mpm-prefork` version `2.2.8-1ubuntu0.15` is installed on the Metasploitable2 target.
 
 Ubuntu Security Notice USN-1199-1 identifies `2.2.8-1ubuntu0.21` as the corrected package version for Ubuntu 8.04.
 
@@ -174,6 +175,7 @@ The package comparison supports a finding of a missing documented security updat
 **Supporting Evidence:**
 - `screenshots/ubuntu-version.png`
 - `screenshots/apache-package-versions.png`
+
 
 #### F-04.2 — vsftpd 2.3.4: Binary Verification
 
@@ -201,12 +203,11 @@ The SHA-256 hash was collected to identify the exact executable examined.
 
 `CVE-2011-2523` concerns a maliciously modified distribution of vsftpd 2.3.4. If this modification is present, unauthorized remote command execution may be possible.
 
-The reported version alone does not establish whether this particular executable contains the backdoor.
-
 The reported version alone does not establish that the backdoor is present. The executable has not been matched against a trusted reference binary, and no exploitation was performed.
 
 **Supporting Evidence:**
-- `screenshots/vsftpd-bianry-verification.png`
+- `screenshots/vsftpd-binary-verification.png`
+
 
 #### F-04.3 — ProFTPD 1.3.1: Service and Configuration Verification
 
@@ -247,6 +248,7 @@ If an applicable vulnerability is present and its prerequisites are satisfied, t
 - Installed package, executable version, configuration syntax, and listening service (verified).
 - SQL module runtime state, security-patch applicability, and CVE exploitability remain (unconfirmed).
 - No exploitation or remediation was performed.
+
 
 #### F-04.4 — MySQL 5.0: Security Update Assessment
 
@@ -303,6 +305,18 @@ Actual exploitability depends on the affected functionality, user privileges, co
 - The installed package predates the security fix documented in USN-671-1. Manually applied patches and exploitability (unconfirmed).
 - No exploitation or remediation was performed.
 
+
+#### F-04.5 — Remaining Software Components Under Investigation
+
+The following services require further security assessment:
+
+|Port|Service|Current Verificatiom Status|
+|--|--|--|
+|22/tcp|OpenSSH|Installed package version 1:4.7p1-8ubuntu1 verified locally; security advisory comparison and patch  applicability require further assessment.|
+|5432/tcp|PostgreSQL|Nmap detected PostgreSQL 8.3.0-8.3.7; installed package version and applicable security advisories have not yet been verified.|
+
+**Verification Status:** Pending further assessment, No exploitation or remediation was performed. 
+
 **Overall Risk:** Provisional — additional components under review. 
 
 **Overall Potential Impact:**
@@ -323,15 +337,16 @@ Actual exploitability depends on the affected functionality, user privileges, co
 - Ubuntu operating system identification (verified).
 - Apache package inventory and advisory comparison (verified).
 - vsftpd executable version and SHA-256 fingerprint (verified).
-- Remaining package and security-advisory checks (pending).
-- ProFTPD package, executable, configuration, and listening-port verification (completed; screenshots pending).
-- MySQL package version, executable version, listening-port verification, and security-advisory comparison (verified).
+- ProFTPD package, executable, configuration syntax, and listening-port verification (verified; configuration evidence screenshots pending).
+- MySQL package version, server executable version, listening-port verification, and security-advisory comparison (verified).
+- OpenSSH security advisory and patch applicability assessment (pending).
+- PostgreSQL package version and security advisory verification (pending).
 
 **Evidence:**
 - `scans/nmap-service-versions.txt`
 - `screenshots/ubuntu-version.png`
 - `screenshots/apache-package-versions.png`
-- `screenshots/vsftp-binary-verification.png`
+- `screenshots/vsftpd-binary-verification.png`
 - `screenshots/proftpd-verification.png`
 - `screenshots/mysql-version-verification.png`
 -  `screenshots/software-versions.png` (to be added)
@@ -345,15 +360,17 @@ Actual exploitability depends on the affected functionality, user privileges, co
 
 **Overall Verification Status:** 
 
-The Ubuntu 8.04 operating system release and installed Apache package versions were verified locally. The installed `apache2-mpm-prefork` package predates the documented security fix for `CVE-2011-3192`.
+The Ubuntu 8.04 operating system release and installed Apache package versions were verified locally.
 
-The vsftpd executable version and SHA-256 fingerprint were verified. Applicapability of `CVE-2011-2523` remains unconfirmed.
+Apache package inspection confirmed that the installed `apache2-mpm-prefork` version predates the documented security fix for CVE-2011-3192.
 
-OpenSSH package identification has been completed, while further advisory verification and assessment of the remaining services are pending.
+The vsftpd executable version and SHA-256 fingerprint were verified. Applicability of CVE-2011-2523 remains unconfirmed.
 
-ProFTPD version 1.3.1 and package version 1.3.1-6ubuntu1 were verified locally. The running daemon was confirmed listening on TCP port 2121. SQL module loading directives were identified, but `CVE-2010-4652` applicability remains unconfirmed.
+ProFTPD version 1.3.1 and package version 1.3.1-6ubuntu1 were verified locally. The running daemon was confirmed listening on TCP port 2121. SQL module-loading directives were identified, but CVE-2010-4652 applicability remains unconfirmed.
 
 The installed MySQL server package version `5.0.51a-3ubuntu5` was verified locally and predates the corrected version `5.0.51a-3ubuntu5.4` documented in Ubuntu Security Notice USN-671-1. The running MySQL service was confirmed listening on TCP port 3306.
+
+OpenSSH package identification has been completed, while its security advisory assessment and PostgreSQL verification remain pending.
 
 No exploitation or remediation was performed.
 
