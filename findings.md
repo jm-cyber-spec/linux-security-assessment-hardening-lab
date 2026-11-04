@@ -246,7 +246,62 @@ If an applicable vulnerability is present and its prerequisites are satisfied, t
 **Verification Status:**
 - Installed package, executable version, configuration syntax, and listening service (verified).
 - SQL module runtime state, security-patch applicability, and CVE exploitability remain (unconfirmed).
-- No exploitation or remediation was performed. 
+- No exploitation or remediation was performed.
+
+#### F-04.4 — MySQL 5.0: Security Update Assessment
+
+**Service:** MySQL (TCP port 3306)
+
+**Operating System:** Ubuntu 8.04 LTS (Hardy)
+
+**Installed Package:** mysql-server-5.0
+
+**Installed Version:** 5.0.51a-3ubuntu5
+
+**Server Executable Version:** 5.0.51a-3ubuntu5
+
+**Security Fix Version:** 5.0.51a-3ubuntu5.4
+
+**Ubuntu Security Advisory:** USN-671-1
+
+**Relevant CVEs:**
+- CVE-2008-2079
+- CVE-2008-3963
+- CVE-2008-4097
+- CVE-2008-4098
+
+**Assessment:**
+
+An Nmap service-version scan identified MySQL 5.0.51a on TCP port 3306.
+
+Local package inspection confirmed that `mysql-server-5.0` version `5.0.51a-3ubuntu5` is installed on the Metasploitable2 target.
+
+The MySQL server executable independently reported version 5.0.51a-3ubuntu5.
+
+Network-listener inspection confirmed that the MySQL daemon (PID 4253 at the time of inspection) was listening on `0.0.0.0:3306`, indicating that the service was bound to all available IPv4 interfaces.
+
+Ubuntu Security Notice USN-671-1 identifies `5.0.51a-3ubuntu5.4` as the corrected MySQL server package version for Ubuntu 8.04.
+
+The installed package predates this documented security update.
+
+The advisory addresses multiple security issues involving MySQL table-file handling and improper processing of empty bit-string literals.
+
+**Potential Impact:**
+
+The documented vulnerabilities include:
+- Possible bypass of certain database privilege checks by authenticated users through affected table-creation functionality.
+- Potential denial of service resulting from improper handling of specially crafted SQL statements.
+
+Actual exploitability depends on the affected functionality, user privileges, configuration, and applicable security fixes.
+
+**Supporting Evidence:**
+- `scans/nmap-service-versions.txt`
+- `screenshots/mysql-version-verification.png`
+
+**Verification Status:**
+- The installed MySQL package version, server executable version, and listening service (verified).
+- The installed package predates the security fix documented in USN-671-1. Manually applied patches and exploitability (unconfirmed).
+- No exploitation or remediation was performed.
 
 **Overall Risk:** Provisional — additional components under review. 
 
@@ -270,6 +325,7 @@ If an applicable vulnerability is present and its prerequisites are satisfied, t
 - vsftpd executable version and SHA-256 fingerprint (verified).
 - Remaining package and security-advisory checks (pending).
 - ProFTPD package, executable, configuration, and listening-port verification (completed; screenshots pending).
+- MySQL package version, executable version, listening-port verification, and security-advisory comparison (verified).
 
 **Evidence:**
 - `scans/nmap-service-versions.txt`
@@ -277,6 +333,7 @@ If an applicable vulnerability is present and its prerequisites are satisfied, t
 - `screenshots/apache-package-versions.png`
 - `screenshots/vsftp-binary-verification.png`
 - `screenshots/proftpd-verification.png`
+- `screenshots/mysql-version-verification.png`
 -  `screenshots/software-versions.png` (to be added)
 
 **References:**
@@ -284,6 +341,7 @@ If an applicable vulnerability is present and its prerequisites are satisfied, t
 - `https://ubuntu.com/security/CVE-2011-3192`
 - `https://nvd.nist.gov/vuln/detail/CVE-2011-2523`
 - `https://nvd.nist.gov/vuln/detail/CVE-2010-4652`
+- `https://ubuntu.com/security/notices/USN-671-1`
 
 **Overall Verification Status:** 
 
@@ -294,6 +352,8 @@ The vsftpd executable version and SHA-256 fingerprint were verified. Applicapabi
 OpenSSH package identification has been completed, while further advisory verification and assessment of the remaining services are pending.
 
 ProFTPD version 1.3.1 and package version 1.3.1-6ubuntu1 were verified locally. The running daemon was confirmed listening on TCP port 2121. SQL module loading directives were identified, but `CVE-2010-4652` applicability remains unconfirmed.
+
+The installed MySQL server package version `5.0.51a-3ubuntu5` was verified locally and predates the corrected version `5.0.51a-3ubuntu5.4` documented in Ubuntu Security Notice USN-671-1. The running MySQL service was confirmed listening on TCP port 3306.
 
 No exploitation or remediation was performed.
 
