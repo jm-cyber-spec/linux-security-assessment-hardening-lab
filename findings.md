@@ -62,7 +62,7 @@ The Nmap observation supports that Telnet is exposed on TCP port 23. No Telnet a
 - `screenshots/legacy-services-configuration.png`
 - `screenshots/telnet-scan.png` (to be added)
 
-**Verification Status:** Nmap confirmed TCP port 23 was open and identified the Telnet service. Local configuration inspection also identified an enabled Telnet entry in `etc/inetd.conf`. No exploitation or remediation was performed. 
+**Verification Status:** Nmap confirmed TCP port 23 was open and identified the Telnet service. Local configuration inspection also identified an enabled Telnet entry in `/etc/inetd.conf`. No exploitation or remediation was performed. 
 
 ---
 
@@ -136,7 +136,7 @@ These observations provide additional evidence of legacy network service exposur
 - `screenshots/legacy-services-configuration.png`
 - `screenshots/service-enumeration.png` (to be added)
 
-**Verification Status:** Service exposure was confirmed by Nmap scan, while configuration and security impact remain under review.
+**Verification Status:** Nmap identified 22 open TCP ports. Local process and listener inspection confirmed `xinetd` running as root and listening on TCP ports 512-514. The legacy service entries n `/etc/inetd.conf` were also verified. No exploitation or remediation was performed.
 
 ---
 
