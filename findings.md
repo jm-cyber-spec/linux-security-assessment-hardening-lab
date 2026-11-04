@@ -109,7 +109,7 @@ The detected services include FTP, SSH, Telnet, SMTP, SMB, remote login services
 
 Local service inspection confirmed that `xinetd` was running as root and listening on TCP ports 512, 513, and 514 at the time of inspection.
 
-The `/etc/inted.conf` configuration contained uncommented service entries for Telnet, TFTP, `rsh,rlogin,rexec`, and `ingreslock`.
+The `/etc/inetd.conf` configuration contained uncommented service entries for Telnet, TFTP, `rsh,rlogin,rexec`, and `ingreslock`.
 
 The inspected `/etc/hosts.allow` and `/etc/hosts.deny` files contained no active access-control rules. Other access restrictions were not comprehensively assessed.
 
@@ -136,7 +136,7 @@ These observations provide additional evidence of legacy network service exposur
 - `screenshots/legacy-services-configuration.png`
 - `screenshots/service-enumeration.png` (to be added)
 
-**Verification Status:** Nmap identified 22 open TCP ports. Local process and listener inspection confirmed `xinetd` running as root and listening on TCP ports 512-514. The legacy service entries n `/etc/inetd.conf` were also verified. No exploitation or remediation was performed.
+**Verification Status:** Nmap identified 22 open TCP ports. Local process and listener inspection confirmed `xinetd` running as root and listening on TCP ports 512-514. The legacy service entries in `/etc/inetd.conf` were also verified. No exploitation or remediation was performed.
 
 ---
 
@@ -159,6 +159,7 @@ These results indicate potentially outdated components that require further inve
 
 Nmap service-version detection alone does not establish that a component contains an exploitable vulnerability.
 
+---
 
 #### F-04.1 — Apache HTTP Server: Security Update Assessment 
 
@@ -188,7 +189,7 @@ The package comparison supports a finding of a missing documented security updat
 
 **Supporting Evidence:**
 - `screenshots/ubuntu-version.png`
-- `screenshots/apache-package-versions.png`
+- `screenshots/apache-package-versions.png`</br>
 
 
 #### F-04.2 — vsftpd 2.3.4: Binary Verification
@@ -220,7 +221,7 @@ The SHA-256 hash was collected to identify the exact executable examined.
 The reported version alone does not establish that the backdoor is present. The executable has not been matched against a trusted reference binary, and no exploitation was performed.
 
 **Supporting Evidence:**
-- `screenshots/vsftpd-binary-verification.png`
+- `screenshots/vsftpd-binary-verification.png`</br>
 
 
 #### F-04.3 — ProFTPD 1.3.1: Service and Configuration Verification
@@ -260,8 +261,8 @@ If an applicable vulnerability is present and its prerequisites are satisfied, t
 
 **Verification Status:**
 - Installed package, executable version, configuration syntax, and listening service (verified).
-- SQL module runtime state, security-patch applicability, and CVE exploitability remain (unconfirmed).
-- No exploitation or remediation was performed.
+- SQL module runtime state, security-patch applicability, and CVE exploitability remain unconfirmed.
+- No exploitation or remediation was performed.</br>
 
 
 #### F-04.4 — MySQL 5.0: Security Update Assessment
@@ -316,8 +317,8 @@ Actual exploitability depends on the affected functionality, user privileges, co
 
 **Verification Status:**
 - The installed MySQL package version, server executable version, and listening service (verified).
-- The installed package predates the security fix documented in USN-671-1. Manually applied patches and exploitability (unconfirmed).
-- No exploitation or remediation was performed.
+- The installed package predates the security fix documented in USN-671-1. Manually applied patches and exploitability were not independently unconfirmed.
+- No exploitation or remediation was performed.</br>
 
 
 #### F-04.5 — Remaining Software Components Under Investigation
@@ -329,14 +330,14 @@ The following services require further security assessment:
 |22/tcp|OpenSSH|Installed package version 1:4.7p1-8ubuntu1 verified locally; security advisory comparison and patch  applicability require further assessment.|
 |5432/tcp|PostgreSQL|Nmap detected PostgreSQL 8.3.0-8.3.7; installed package version and applicable security advisories have not yet been verified.|
 
-**Verification Status:** Pending further assessment, No exploitation or remediation was performed. 
+**Verification Status:** Further assessment is pending. No exploitation or remediation was performed.</br>
 
-**Overall Risk:** Provisional — additional components under review. 
+**Overall Risk:** Provisional — additional components under review.</br>
 
 **Overall Potential Impact:**
 
 - Unsupported or unpatched network-facing software may expose the system to known vulnerabilities, potentially resulting in denial of service, unauthorized access, or system compromise.
-- The actual impact depends on the affected component, configuration, applicable security fixes.
+- The actual impact depends on the affected component, configuration, applicable security fixes.</br>
 
 **Recommendation:**
 - Verify installed software versions and security patch levels.
@@ -344,7 +345,7 @@ The following services require further security assessment:
 - Replace unnecessary legacy FTP service with supported alternatives, using SFTP where appropriate.
 - Replace unsupported operating systems and services with supported alternatives.
 - Apply available security updates in an appropriately maintained environment.
-- Disable unnecessary network-facing services.
+- Disable unnecessary network-facing services.</br>
 
 **Evidence Required:**
 - Nmap service version detection results identifying exposed services and their reported versions (collected).
@@ -354,7 +355,7 @@ The following services require further security assessment:
 - ProFTPD package, executable, configuration syntax, and listening-port verification (verified; configuration evidence screenshots pending).
 - MySQL package version, server executable version, listening-port verification, and security-advisory comparison (verified).
 - OpenSSH security advisory and patch applicability assessment (pending).
-- PostgreSQL package version and security advisory verification (pending).
+- PostgreSQL package version and security advisory verification (pending).</br>
 
 **Evidence:**
 - `scans/nmap-service-versions.txt`
@@ -363,30 +364,30 @@ The following services require further security assessment:
 - `screenshots/vsftpd-binary-verification.png`
 - `screenshots/proftpd-verification.png`
 - `screenshots/mysql-version-verification.png`
--  `screenshots/software-versions.png` (to be added)
+-  `screenshots/software-versions.png` (to be added)</br>
 
 **References:**
 - `https://ubuntu.com/security/notices/USN-1199-1`
 - `https://ubuntu.com/security/CVE-2011-3192`
 - `https://nvd.nist.gov/vuln/detail/CVE-2011-2523`
 - `https://nvd.nist.gov/vuln/detail/CVE-2010-4652`
-- `https://ubuntu.com/security/notices/USN-671-1`
+- `https://ubuntu.com/security/notices/USN-671-1`</br>
 
 **Overall Verification Status:** 
 
 The Ubuntu 8.04 operating system release and installed Apache package versions were verified locally.
 
-Apache package inspection confirmed that the installed `apache2-mpm-prefork` version predates the documented security fix for CVE-2011-3192.
+**Apache HTTP Server:** The installed `apache2-mpm-prefork` package version `2.2.81ubuntu0.15` predates the documented security fix `2.2.8-1ubuntu0.21` for CVE-2011-3192 in Ubuntu Security Notice USN-1199-1.
 
-The vsftpd executable version and SHA-256 fingerprint were verified. Applicability of CVE-2011-2523 remains unconfirmed.
+**vsftpd:** The executable reported version `2.3.4` and its SHA-256 fingerprint were verified. Applicability of CVE-2011-2523 remains unconfirmed because the executable has not been validated against a trusted refernce binary.
 
-ProFTPD version 1.3.1 and package version 1.3.1-6ubuntu1 were verified locally. The running daemon was confirmed listening on TCP port 2121. SQL module-loading directives were identified, but CVE-2010-4652 applicability remains unconfirmed.
+**ProFTPD:** The installed package version `1.3.1-6ubuntu1` and executable version `1.3.1` and running service on TCP port 2121 were verified. SQL module-loading directives were identified, but CVE-2010-4652 applicability remains unconfirmed.
 
-The installed MySQL server package version `5.0.51a-3ubuntu5` was verified locally and predates the corrected version `5.0.51a-3ubuntu5.4` documented in Ubuntu Security Notice USN-671-1. The running MySQL service was confirmed listening on TCP port 3306.
+**MySQL:** The installed server package version `5.0.51a-3ubuntu5` predates the documented security fix `5.0.51a-3ubuntu5.4` in Ubuntu Security Notice USN-671-1. The running MySQL service was confirmed listening on TCP port 3306.
 
-OpenSSH package identification has been completed, while its security advisory assessment and PostgreSQL verification remain pending.
+**Remaining Components:** The OpenSSH package version was identified locally, but its security advisory assessment remains pending. PostgreSQL package verification and security-advisory assessment also remain pending.
 
-No exploitation or remediation was performed.
+**Assessment Limitations:** Exploitability was not independently tested and the possibility of manually applied security patches has not been ruled out. No exploitation or remediation was performed.
 
 ---
 
