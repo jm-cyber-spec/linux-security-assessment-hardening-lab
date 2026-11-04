@@ -138,6 +138,7 @@ ss -tuln
 
 ### 4. Service and Log Inspection
 
+
 #### 4.1 Review System Services
 
 ```
@@ -145,6 +146,7 @@ systemctl --type=service --state=running
 ```
 
 **Purpose:** Lists running systemd services.
+
 
 #### 4.2 Review System Logs
 
@@ -155,6 +157,7 @@ journalctl
 **Purpose:** Displays logs collected by the systemd journal.
 
 **Note:** These commands depend on systemd and may not be available on older Linux distributions. Their availability will be checked during the practical assessment. 
+
 
 #### 4.3 Legacy Network Service and Configuration Inspection
 
@@ -167,26 +170,22 @@ journalctl
 ```
 sudo netstat -tulnp | grep -E ':(512|513|514)\b'
 ``` 
-
 Identifies listening services associated with TCP ports 512, 513, and 514, including process information.
 
 ```
 ps aux | grep '[x]inetd'
 ```
-
 Identifies the running `xinetd` process and its process owner.
 
 ```
 cat /etc/inetd.conf
 ```
-
 Displays legacy service definitions configured through the inetd-compatible configuration.
 
 ```
 cat /etc/hosts.allow
 cat /etc/hosts.deny
 ```
-
 Displays TCP Wrappers access control configuration files.
 
 **Related Findings:** F-01 — Telnet Service Exposure, F-03 — Excessive Network Service Exposure.
@@ -194,6 +193,66 @@ Displays TCP Wrappers access control configuration files.
 **Evidence:**
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
 - [Legacy Services Configuration Screenshot](screenshots/legacy-services-configuration.png)
+
+
+#### 4.4 Apache HTTP Server Version Inspection Executed on: Metasploitable2 (Target VM)
+
+**Purpose:** Identify the operating system release and installed Apache package versions for comparison against Ubuntu security advisories.
+
+**Commands Executed:**
+
+```
+cat /etc/lsb-review
+```
+Displays the Ubuntu distribution and release information.
+
+```
+dpkg -l 'apache*'
+```
+Lists Apache-related packages and their package installation states and versions.
+
+**Related Findings:** F-04.1 — Apache HTTP Server
+
+**Evidence:**
+- [Ubuntu Version Screenshot](screenshots/ubuntu-version.png)
+- [Apache Package Versions Screenchot](screenshots/apache-package-versions.png)
+
+  
+#### 4.5 vsftpd Version and Binary Inspection
+
+**Executed on:** Metasploitable2 (Target VM)
+
+**Purpose:** Identify the vsftpd executable version, package installation status, executable type, and SHA-256 fingerprint.
+
+**Commands used:**
+
+```
+/usr/sbin/vsftpd -v
+```
+Displays the version reported by the vsftpd executable.
+
+```
+dpkg -l vsftpd
+```
+Checks whether vsftpd is registered as an installed Debian package.
+
+```
+file /usr/sbin/vsftpd
+```
+Identifies the executable's file format.
+
+```
+sha256sum /usr/sbin/vsftpd
+```
+Calculates the executable's SHA-256 fingerprint for potential comparison against a trusted reference.
+
+**Related Findings:** F-04.2 — vsftpd
+
+**Evidence:**
+- [vsftpd Binary Verification Screenshot](screenshots/vsftpd-binary-verification.png)
+- [Nmap Service Version Scan](scans/nmap-service-versions.txt)
+
+
 
 ---
 
