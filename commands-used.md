@@ -22,7 +22,7 @@ All assessment activities were performed within the authorized local VirtualBox 
 
 ### 2. Network Discovery and Scanning
 
-**2.1 Identify Network Interfaces**
+#### 2.1 Identify Network Interfaces
 
 `ip a`
 
@@ -30,7 +30,7 @@ All assessment activities were performed within the authorized local VirtualBox 
 
 **Usage:** Helps identify the Kali Linux Host-only network interface and verify its network configuration.
 
-**2.2 Check Network Connectivity**
+#### 2.2 Check Network Connectivity
 
 `ping -c 4 192.168.56.104`
 
@@ -38,7 +38,7 @@ All assessment activities were performed within the authorized local VirtualBox 
 
 **Usage:** Checks basic network connectivity between Kali Linux and the target machine. 
 
-**2.3 Scan Target Ports Using Nmap**
+#### 2.3 Scan Target Ports Using Nmap
 
 `nmap 192.168.56.104`
 
@@ -46,7 +46,7 @@ All assessment activities were performed within the authorized local VirtualBox 
 
 **Usage:** Identifies accessible ports on the target machine.
 
-**2.4 Detect Service Versions**
+#### 2.4 Detect Service Versions
 
 `nmap -sV 192.168.56.104`
 
@@ -54,7 +54,7 @@ All assessment activities were performed within the authorized local VirtualBox 
 
 **Usage:** Helps document exposed services and investigate potentially outdated software.
 
-**2.5 Save Nmap Results**
+#### 2.5 Save Nmap Results
 
 **Executed on:** Kali Linux (analyst VM)
 
@@ -70,25 +70,25 @@ All assessment activities were performed within the authorized local VirtualBox 
 
 ### 3. Linux System Inspection
 
-**3.1 Identify Current User**
+#### 3.1 Identify Current User
 
 `whoami`
 
 **Purpose:** Displays the currently logged-in username.
 
-**3.2 Display User and Group Information**
+#### 3.2 Display User and Group Information
 
 `id`
 
 **Purpose:** Displays the current user's UID, GID, and group memberships.
 
-**3.3 Review File Permissions**
+#### 3.3 Review File Permissions
 
 `ls -l`
 
 **Purpose:** Lists files in the current directory, including their permissions, ownership, and other file details.
 
-**3.4 Review Directory Permissions**
+#### 3.4 Review Directory Permissions
 
 `ls -ld /path/to/directory`
 
@@ -96,7 +96,7 @@ All assessment activities were performed within the authorized local VirtualBox 
 
 **Note:** **/path/to/directory** is a placeholder (reference command). Replace it with the actual directory path when performing the assessment.
 
-**3.5 Review Running Processes**
+#### 3.5 Review Running Processes
 
 `ps aux`
 
@@ -104,7 +104,7 @@ All assessment activities were performed within the authorized local VirtualBox 
 
 **Usage:** Helps inspect process ownership and identify services requiring further review.
 
-**3.6 Review Listening Network Services**
+#### 3.6 Review Listening Network Services
 
 `ss -tuln`
 
@@ -116,19 +116,33 @@ All assessment activities were performed within the authorized local VirtualBox 
 
 ### 4. Service and Log Inspection
 
-**4.1 Review System Services**
+#### 4.1 Review System Services
 
 `systemctl --type=service --state=running`
 
 **Purpose:** Lists running systemd services.
 
-**4.2 Review System Logs**
+#### 4.2 Review System Logs
 
 `journalctl`
 
 **Purpose:** Displays logs collected by the systemd journal.
 
 **Note:** These commands depend on systemd and may not be available on older Linux distributions. Their availability will be checked during the practical assessment. 
+
+#### 4.3 Legacy Network Service and Configuration Inspection
+
+**Executed On:** Metasploitable2 (Target VM)
+
+**Purpose:** Inspect legacy network services, their configuration, and the processes responsible for listening on netwrok ports.
+
+**Commands Executed:**
+
+`sudo netstat -tulpn | grep -E ':(512|513|514)\b'` Identifies listening services associated with TCP ports 512, 513, and 514, including process information.
+
+`ps aux | grep '[x]inetd'` Identifies the running `xinetd` process and its process owner.
+
+`cat /etc/hosts.allow` `cat /etc/hosts.deny` Displays TCP Wrappers access control configuration files.
 
 ---
 
