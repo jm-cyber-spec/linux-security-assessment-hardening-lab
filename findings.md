@@ -37,6 +37,10 @@ Recommended security improvements and remediation guidance are documented in har
 
 **Observation:** Nmap service-version detection identified `Linux telnetd` listening on TCP port 23 on the target machine.
 
+Local configuration inspection of `/etc/inetd.conf` also identified an uncommented Telnet service entry invoking `/usr/sbin/in.telnetd` through `/usr/sbin/tcpd`.
+
+The Nmap observation supports that Telnet is exposed on TCP port 23. No Telnet authentication attempt or credential interception was performed.
+
 **Risk:** Provisional — pending further assessment.
 
 **Potential Impact:** 
@@ -57,7 +61,7 @@ Recommended security improvements and remediation guidance are documented in har
 - `scans/nmap-service-versions.txt`
 - `screenshots/telnet-scan.png` (to be added)
 
-**Verification Status:** Service exposure was confirmed by Nmap scan, while configuration and security impact remain under review.
+**Verification Status:** Nmap service detection and local configuration inspection were completed
 
 ---
 
@@ -102,6 +106,14 @@ Password status, password-aging settings, and selected PAM configuration files w
 
 The detected services include FTP, SSH, Telnet, SMTP, SMB, remote login services, database services and web services.
 
+Local service inspection confirmed that `xinetd` was running as root and listening on TCP ports 512, 513, and 514 at the time of inspection.
+
+The `/etc/inted.conf` configuration contained uncommented service entries for Telnet, TFTP, `rsh,rlogin,rexec`, and `ingreslock`.
+
+The inspected `/etc/hosts.allow` and `/etc/hosts.deny` files contained no active access-control rules. Other access restrictions were not comprehensively assessed.
+
+These observations provide additional evidence of legacy network service exposure. No exploitation or unauthorized access was attempted.
+
 **Risk:** Provisional — pending further assessment.
 
 **Potential Impact:**
@@ -120,6 +132,7 @@ The detected services include FTP, SSH, Telnet, SMTP, SMB, remote login services
 
 **Suggested Evidence:**
 - `scans/nmap-service-versions.txt`
+- `screenshots/legacy-services-configuration.png`
 - `screenshots/service-enumeration.png` (to be added)
 
 **Verification Status:** Service exposure was confirmed by Nmap scan, while configuration and security impact remain under review.
