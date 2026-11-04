@@ -2,11 +2,21 @@
 
 ### 1. Purpose
 
-This document records the commands used during the Linux Security Assessment and Hardening Lab.
+#### Lab Environment and Command Execution
 
-The commands support network discovery, service enumeration, Linux permission inspection, process inspection, and security configuration review.
+**Analyst VM:** Kali Linux (192.168.56.101)
+
+**Target VM:** Metasploitable2 (192.168.56.104)
+
+This document records the commands used during the Linux Security Assessment and Hardening Lab. 
+
+Kali Linux was used for network discovery, connectivity testing, and Nmap scanning.
+
+Metasploitable2 was used for local package  inspection, service configuration review, user and group inspection, file permission auditing, and process and network-listener verification.
 
 This document distinguishes commands executed during the assessment from commands included as reference material.
+
+All assessment activities were performed within the authorized local VirtualBox lab.
 
 ---
 
@@ -46,11 +56,15 @@ This document distinguishes commands executed during the assessment from command
 
 **2.5 Save Nmap Results**
 
-`nmap -sV 192.168.56.104 -oN scans/nmap-service-versions.txt`
+**Executed on:** Kali Linux (analyst VM)
 
-**Purpose:** Saves the scan output in normal text format.
+`nmap -sV 192.168.56.104 -oN ~/nmap-service-versions.txt`
 
-**Usage:** Provides supporting evidence for documenting network service exposure and detected software versions.
+**Purpose:** Performs service-version detection against the Metasploitable2 target and saves the scan output in normal text format.
+
+**Evidence Handling:** The scan was executed on Kali Linux and initially saved as `~/nmap-service-versions.txt`. The output was subsequently uploaded to the GitHub repository as `scans/nmap-service-versions.txt`.
+
+**Verification Status:** Executed; scan output collected.
 
 ---
 
@@ -72,7 +86,7 @@ This document distinguishes commands executed during the assessment from command
 
 `ls -l`
 
-**Purpose:** Lists file permissions, ownership, and details.
+**Purpose:** Lists files in the current directory, including their permissions, ownership, and other file details.
 
 **3.4 Review Directory Permissions**
 
@@ -80,7 +94,7 @@ This document distinguishes commands executed during the assessment from command
 
 **Purpose:** Displays permissions and ownership of a specified directory.
 
-**Note:** **/path/to/directory** is a placeholder. Replace it with the actual directory path when performing the assessment.
+**Note:** **/path/to/directory** is a placeholder (reference command). Replace it with the actual directory path when performing the assessment.
 
 **3.5 Review Running Processes**
 
