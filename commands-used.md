@@ -188,34 +188,36 @@ cat /etc/hosts.deny
 ```
 Displays TCP Wrappers access control configuration files.
 
-**Related Findings:** F-01 — Telnet Service Exposure, F-03 — Excessive Network Service Exposure.
+**Related Findings:** F-01 — Telnet Service Exposure, F-03 — Excessive Network Service Exposure.</br>
 
 **Evidence:**
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
 - [Legacy Services Configuration Screenshot](screenshots/legacy-services-configuration.png)
 
 
-#### 4.4 Apache HTTP Server Version Inspection Executed on: Metasploitable2 (Target VM)
+#### 4.4 Apache HTTP Server Version Inspection 
+
+**Executed on:** Metasploitable2 (Target VM)
 
 **Purpose:** Identify the operating system release and installed Apache package versions for comparison against Ubuntu security advisories.
 
 **Commands Executed:**
 
 ```
-cat /etc/lsb-review
+cat /etc/lsb-release
 ```
 Displays the Ubuntu distribution and release information.
 
 ```
-dpkg -l 'apache*'
+dpkg -l 'apache2*'
 ```
 Lists Apache-related packages and their package installation states and versions.
 
-**Related Findings:** F-04.1 — Apache HTTP Server
+**Related Findings:** F-04.1 — Apache HTTP Server.</br>
 
 **Evidence:**
 - [Ubuntu Version Screenshot](screenshots/ubuntu-version.png)
-- [Apache Package Versions Screenchot](screenshots/apache-package-versions.png)
+- [Apache Package Versions Screenshot](screenshots/apache-package-versions.png)
 
   
 #### 4.5 vsftpd Version and Binary Inspection
@@ -246,12 +248,85 @@ sha256sum /usr/sbin/vsftpd
 ```
 Calculates the executable's SHA-256 fingerprint for potential comparison against a trusted reference.
 
-**Related Findings:** F-04.2 — vsftpd
+**Related Findings:** F-04.2 — vsftpd</br>
 
 **Evidence:**
 - [vsftpd Binary Verification Screenshot](screenshots/vsftpd-binary-verification.png)
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
 
+
+#### 4.6 ProFTPD Service and Configuration Inspection
+
+**Executed on:** Metaspolitable2 (Target VM)
+
+**Purpose:** Identify the installed ProFTPD version, listening service and relevant SQL module configuration.
+
+**Commands Executed:**
+
+```
+dpkg -l proftpd
+/usr/sbin/proftpd -v
+```
+Checks the installed package and executable versions.
+
+```
+dpkg-query -W -f='${Package} ${Version}\n' proftpd
+```
+Displays the installed ProFTPD package name and version using a custom output format. 
+
+```
+sudo netstat -tlnp | grep proftpd
+```
+Identifies the ProFTPD listening socket and process.
+
+```
+cat /etc/proftpd/proftpd.conf
+cat /etc/proftpd/modules.conf
+```
+Displays the main configuration and module loading directives.
+
+```
+grep -R -E 'SQLEngine|SQLAuthenticate|SQLConnectInfo|SQLUserInfo|SQLGroupInfo' /etc/proftpd/
+```
+Searches configuration files for SQL authentication and connection directives.
+
+```
+sudo /usr/sbin/proftpd -t
+```
+Checks ProFTPD configuration syntax without starting a new service.
+
+**Related Findings:** F-04.3 — ProFTPD</br>
+
+**Evidence:** [ProFTPD Verification Screenshot](acreenshots/proftpd-verification.png)
+
+
+#### 4.7 MySQL Server Version and Listener Inspection
+
+**Executed on:** Metasploitable2 (Target VM)
+
+**Purpose:** Verify installed MySQL package versions, executable versions and network-listener configuration.
+
+**Commands Executed:**
+
+```
+dpkg -l 'mysql-server*' | grep '^ii'
+```
+Lists installed MySQL server packages.
+
+```
+mysql --version
+mysqld --version
+```
+Displays the MySQL client and server executable versions.
+
+```
+sudo netstat -tlnp | grep ':3306'
+```
+Identifies the process listening on MySQL's TCP port 3306.
+
+**Related Findings:** F-04.4 — MySQL</br>
+
+**Evidence:** [MySQL Version Verification Screenshot](screenshots/mysql-version-verification.png)
 
 
 ---
