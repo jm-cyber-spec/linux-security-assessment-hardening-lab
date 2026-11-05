@@ -404,7 +404,7 @@ Displays permissions and ownership of security-sensitive account and privilege c
 
 Shows the output of `sudo -l`, confirming the inspected user's sudo privileges.
 
-**Evidence Limitations:** The remaining commands were inspected during the lab but their outputs are not included in this scrreenshot.
+**Evidence Limitations:** The remaining commands were inspected during the lab but their outputs are not included in this screenshot.
 
 ---
 
