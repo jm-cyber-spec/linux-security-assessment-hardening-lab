@@ -14,12 +14,17 @@ The objective is to develop practical cybersecurity skills in network service di
 * Document findings through evidence-based security reporting.
 
 ## Lab Environment
- * Analyst system: Kali Linux
- * Target system: Metasploitable2
- * Virtualization: Oracle VirtualBox
- * Networking: Host-only network, configured to isolate the assessment environment.
+ * **Virtualization:** Oracle VirtualBox
+ * **Analyst system:** Kali Linux (`192.168.56.101`)
+   - Adapter 1: NAT
+   - Adapter 2: Host-Only
+ * **Target system:** Metasploitable2 (`192.168.56.104`)
+   - Host-Only network
+ * **Target Operating System:** Ubuntu 8.04 LTS (Hardy Heron)
 
-See lab-setup.md for setup instructions and network configuration.
+The Metasploitable2 target was isolated from external networks. Kali Linux was used for network scanning and security assessment activities.
+
+See [Lab Setup](lab-setup.md) for setup instructions and network configuration.
 
 ## Tools
 * Nmap — Network and service discovery.
@@ -52,14 +57,40 @@ Metasploitable2 is intentionally vulnerable and must be isolated from untrusted 
 
 ## Findings and Results
 
-Verified findings, remediation recommendations, and validation results will be documented in findings.md and hardening-recommendations.md.
-Results will be added as the assessment progresses. No remediation or validation will be claimed until it has been performed and verified.
+The assessment documented security observations relating to:
+- Telnet service exposure.
+- Authenticate and password policy configuration.
+- Excessive network service exposure.
+- Potentially outdated software components.
+- User privileges and privilege separation.
+- Linux security hardening baseline.
+
+Network scanning, local configuration inspection, package-version verification, and security-advisory comparisons were performed within the controlled lab.
+
+Findings include supporting evidence, security implications, recommended defensive improvements, and verification limitations.
+
+See [Security Findings](findings.md) and [Hardening Recommendations](hardening-recommendations.md).
+
+No exploitation or remediation was performed as part of the documented assessment.
 
 ## Current Status
 
-**Status:** In progress
+**Status:** Security assessment and documentation in progress.
 
-This repository is being developed as a cybersecurity learning and portfolio project. Documentation and results will be updated as the assessment and hardening activities are completed.
+**Completed:**
+- Network discovery and service-version scanning.
+- Inspection of legacy services and authentication.
+- Initial privilege and file-permission assessment.
+- Selected software package and security-advisory comparisons.
+- Documentation of findings and supporting evidence.
+
+**Pending:**
+- Remaining software verification, including OpenSSH and PostgreSQL.
+- Further validation of selected authentication and privilege-related observations.
+- Repository documentation consistency review.
+- Controlled hardening and remediation validation, if undertaken.
+
+This repository is being developed as a cybersecurity learning and portfolio project.
 
 ## Learning Outcomes
 
