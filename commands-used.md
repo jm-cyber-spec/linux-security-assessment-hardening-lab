@@ -134,6 +134,8 @@ ss -tuln
 
 **Usage:** Helps identify services listening on network ports.
 
+**Note:** Status: Reference command, execution not verified during this assessment.
+
 ---
 
 ### 4. Service and Log Inspection
@@ -147,6 +149,8 @@ systemctl --type=service --state=running
 
 **Purpose:** Lists running systemd services.
 
+**Note:** Status: Reference command for systemd-based Linux distributions; not verified on Metasploitable2.
+
 
 #### 4.2 Review System Logs
 
@@ -156,7 +160,9 @@ journalctl
 
 **Purpose:** Displays logs collected by the systemd journal.
 
-**Note:** These commands depend on systemd and may not be available on older Linux distributions. Their availability will be checked during the practical assessment. 
+**Note:** These commands depend on systemd and may not be available on older Linux distributions.
+
+Status: Reference command for systemd-based Linux distributions; not verified on Metasploitable2. 
 
 
 #### 4.3 Legacy Network Service and Configuration Inspection
@@ -356,5 +362,5 @@ Security improvements and remediation validation should be documented in `harden
 
 ### 7. References
 
-- [Nmap Reference Guide] (https://nmap.org/book/man.html)
-- [Linux Manual Pages (`man`)] (https://man7.org/linux/man-pages/)
+- [Nmap Reference Guide](https://nmap.org/book/man.html)
+- [Linux Manual Pages (`man`)](https://man7.org/linux/man-pages/)
