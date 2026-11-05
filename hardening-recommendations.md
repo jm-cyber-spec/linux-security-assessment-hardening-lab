@@ -31,7 +31,7 @@ These recommendations are proposed actions and should not be considered implemen
 
 **2.2 Strengthen Authentication Security**
 
-**Related Finding:** F-02 — Weak or Default Credentials
+**Related Finding:** [F-02 — Authentication and Password Policy](findings.md)
 
 **Risk Addressed:** Unauthorized access through weak or predictable credentials.
 
@@ -80,13 +80,15 @@ These recommendations are proposed actions and should not be considered implemen
 - Replace unsupported software when necessary.
 
 **Validation:**
-- Review installed software versions.
-- Confirm applicable security updates have been applied.
-- Reassess previously identified software vulnerabilities.
+- Verify installed software and package versions.
+- Compare installed package versions against relevant vendor security advisories.
+- Confirm whether applicable security fixes have been installed.
+- Investigate any suspected vulnerabilities before concluding that they affect the system.
+- If remediation is performed, repeat the relevant checks and document the results.
 
 **2.5 Apply the Principle of Least Privilege**
 
-**Related Finding:** F-05 — Potential Privilege Separation Weaknesses 
+**Related Finding:** [F-05 — Privilege Separation](findings.md) 
 
 **Risk Addressed:** Excessive permissions and unnecessary administrative access.
 
