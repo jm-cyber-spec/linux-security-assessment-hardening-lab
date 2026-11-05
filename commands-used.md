@@ -335,6 +335,39 @@ Identifies the process listening on MySQL's TCP port 3306.
 **Evidence:** [MySQL Version Verification Screenshot](screenshots/mysql-version-verification.png)
 
 
+
+#### 4.8 Authentication and Password Policy Inspection
+
+**Executed on:** Metasploitable2 (Target VM)
+
+**Purpose:** Inspect local account password status, password-aging settings and PAM authentication configuration.
+
+**Commands used:**
+
+```
+sudo passwd -S msfadmin
+```
+Displays password status and aging information for the `msfadmin` account.
+
+```
+cat /etc/login.defs
+```
+Displays system-wide login and password aging configuration defaults.
+
+```
+cat /etc/pam.d/common-auth
+cat /etc/pam.d/common-password
+```
+Displays PAM authentication and password policy configuration.
+
+**Related Findings:** F-02 — Authentication and Password Policy.
+
+**Evidence:**
+- [Password Aging Policy](screenshots/password-aging-policy)
+- [Password Policy Configuration](screenshots/password-policy-configuration.png)
+- [Authentication Configuration](screenshots/authentication-configuration.png)
+
+
 ---
 
 ### 5. Command Execution Notes
@@ -358,13 +391,14 @@ The following scan output and screenshots were collected during the Linux Securi
 - [Ubuntu Version](screenshots/ubuntu-version.png)
 - [Apache Package Versions](screenshots/apache-package-versions.png)
 - [vsftpd Binary Verification](screenshots/vsftpd-binary-verification.png)
+- [ProFTPD Verification](screenshots/proftpd-verification.png)
 - [MySQL Version Verification](screenshots/mysql-version-verification.png)
 
 **Authentication and Privilege Inspection**
 
 - [Sudo Privileges](screenshots/sudo-privileges.png)
 - [Password Aging Policy](screenshots/password-aging-policy.png)
-- [password Policy Configuration](screenshots/password-policy-configuration.png)
+- [Password Policy Configuration](screenshots/password-policy-configuration.png)
 - [Authentication Configuration](screenshots/authentication-configuration.png)
 
 Detailed observations, security implications, and verification limitations are documented in `findings.md`.
