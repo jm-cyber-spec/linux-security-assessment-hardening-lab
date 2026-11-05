@@ -16,7 +16,7 @@ This lab is intended for educational purposes and authorized testing only.
 
 ### Virtual Machines
 
-#### 1. Kali Linux --- Analyst Machine
+#### 1. Kali Linux — Analyst Machine
 Purpose:
 - Perform network and service discovery
 - Inspect security configurations and permissions.
@@ -27,7 +27,7 @@ Network configuration:
 - Adapter 1: NAT, for internet access and updates.
 - Adapter 2: Host-only, for communication with the isolated lab target.
 
-#### 2. Metasploitable2 -- Target MAchine
+#### 2. Metasploitable2 — Target Machine
 Purpose:
 - Provide an intentionally vulnerable Linux system for security assessment.
 - Demonstrate exposed services and insecure configurations.
@@ -38,7 +38,7 @@ Network configuration:
 - Additional adapters: Disabled for this isolated assessment.
 - Internet access: Not intentionally provided.
 
-Metasplotitable2 must not be exposed to untrusted networks.
+Metasploitable2 must not be exposed to untrusted networks.
 
 ---
 
@@ -69,22 +69,24 @@ This architecture demonstrates several important security principles:
 
 ---
 
-### Tools Used
+### Tools and Utilities
 
 #### Virtualization
-- Oracle VirtualBox
+- Oracle VirtualBox — Virtual machine management and network isolation.
 
-#### Kali Linux
-- Nmap -- Network and service discovery.
-- ss -- Socket and listening-port inspection.
-- journalctl -- Systemd journal inspection, where applicable.
-- Linux core utilities -- Basic system and permission checks.
+#### Kali Linux (Analyst VM)
+- Nmap — Network discovery and service-version scanning.
+- Linux command-line utilities — Network connectivity testing and inspection.
 
-#### Metasploitable2
-- ifconfig or ip -- Network interface inspection, depending on availability.
-- Available system utilities -- Target configuration and security observations.
+#### Metasploitable2 (Target VM)
+- Linux command-line utilities — User, group, and file-permission inspection.
+- `dpkg` and `dpkg-query` — Installed package verification.
+- `ps` and `netstat` — Process and network-listener inspection.
+- Configuration file inspection — Authentication, legacy services, and application configuration reviews.
 
-Tools and commands will be documented according to their actual use in the lab.
+Commands such as `ss`, `systemctl`, and `journalctl` are documented as reference commands where execution was not confirmed.
+
+See [Commands Used](commands-used.md) for the commands documented during this assessment.
 
 ### Safety Considerations
 - Keep Metasploitable2 connected only to the intended isolated lab network.
@@ -94,4 +96,10 @@ Tools and commands will be documented according to their actual use in the lab.
 
 ### Project Status
 
-This lab environment is being documented as part of a Linux security assessment and hardening portfolio project. Network configuration, assessment findings, and remediation results will be updated as they are verified.
+The virtual lab environment has been configured, and network discovery, service inspection, authentication review, privilege inspection, and selected software-version assessments have been documented.
+
+The assessment remains in progress. Further verification of selected software components and security configurations is pending.
+
+No exploitation or remediation has been performed as part of the documented assessment.
+
+See [Security Findings](findings.md) for current observations and verification limitations.
