@@ -346,17 +346,30 @@ Identifies the process listening on MySQL's TCP port 3306.
 
 ### 6. Evidence and Results
 
-Supporting scan outputs and screenshots will be added to the repository as the assessment progresses.
+The following scan output and screenshots were collected during the Linux Security Assessment and Hardening Lab.
 
-Recommended evidence locations:
+**Network Scanning**
+
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
-- `screenshots/network-configuration.png`(Upload pending)
-- `screenshots/service-enumeration.png` (Upload pending)
-- `screenshots/permissions-review.png` (Upload pending)
 
-Actual results should be documented alongside the relevant findings in `findings.md`
+**Service and Configuration Inspection**
 
-Security improvements and remediation validation should be documented in `hardening-recommendations.md`
+- [Legacy Services Configuration](screenshots/legacy-services-configuration.png)
+- [Ubuntu Version](screenshots/ubuntu-version.png)
+- [Apache Package Versions](screenshots/apache-package-versions.png)
+- [vsftpd Binary Verification](screenshots/vsftpd-binary-verification.png)
+- [MySQL Version Verification](screenshots/mysql-version-verification.png)
+
+**Authentication and Privilege Inspection**
+
+- [Sudo Privileges](screenshots/sudo-privileges.png)
+- [Password Aging Policy](screenshots/password-aging-policy.png)
+- [password Policy Configuration](screenshots/password-policy-configuration.png)
+- [Authentication Configuration](screenshots/authentication-configuration.png)
+
+Detailed observations, security implications, and verification limitations are documented in `findings.md`.
+
+Hardening recommendations are documented in `hardening-recommendations.md`.
 
 ---
 
