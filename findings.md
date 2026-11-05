@@ -293,7 +293,7 @@ An Nmap service-version scan identified MySQL 5.0.51a on TCP port 3306.
 
 Local package inspection confirmed that `mysql-server-5.0` version `5.0.51a-3ubuntu5` is installed on the Metasploitable2 target.
 
-The MySQL server executable independently reported version 5.0.51a-3ubuntu5.
+The MySQL server executable independently reported version `5.0.51a-3ubuntu5`.
 
 Network-listener inspection confirmed that the MySQL daemon (PID 4253 at the time of inspection) was listening on `0.0.0.0:3306`, indicating that the service was bound to all available IPv4 interfaces.
 
@@ -323,14 +323,47 @@ Actual exploitability depends on the affected functionality, user privileges, co
 
 #### F-04.5 — Remaining Software Components Under Investigation
 
-The following services require further security assessment:
+**OpenSSH:** The installed package version 1:4.7p1-8ubuntu1 verified locally; security advisory comparison and patch applicability remain pending.
 
-|Port|Service|Current Verification Status|
-|--|--|--|
-|22/tcp|OpenSSH|Installed package version 1:4.7p1-8ubuntu1 verified locally; security advisory comparison and patch  applicability require further assessment.|
-|5432/tcp|PostgreSQL|Nmap detected PostgreSQL 8.3.0-8.3.7; installed package version and applicable security advisories have not yet been verified.|
+**PostgreSQL 8.3:** Security Update Assessment
 
-**Verification Status:** Further assessment is pending. No exploitation or remediation was performed.</br>
+**Service:** PostgreSQL (TCP port 5432)
+
+**Operating System:** Ubuntu 8.04 LTS (Hardy)
+
+**Installed Package:** postgresql-8.3
+
+**Installed Version:** 8.3.1-1
+
+**Client Version:** 8.3.1
+
+**Running Server Version:** 8.3.1
+
+**Security Fix Version:** 8.3.7-0ubuntu8.04.1
+
+**Ubuntu Security Advisory:** USN-753-1
+
+**Relevant CVE:** CVE-2009-0922
+
+**Assessment:**
+
+Local package inspection confirmed PostgreSQL package version `8.3.1-1`. The `psql` executable reported version `8.3.1`, and a read-only SQL query independently confirmed that the running server reported `PostgreSQL 8.3.1`.
+
+Network-listener inspection identified the PostgreSQL process listening on `0.0.0.0:5432` and `[::]:5432`, indicating wildcard IPv4 and IPv6 bindings.
+
+Ubuntu Security Notice USN-753-1 identifies `8.3.7-0ubuntu8.04.1` as the security-fix package version for Ubuntu 8.04. The installed package predates that update.
+
+CVE-2009-0922 concerns a potential denial of service condition involving PostgreSQL encoding conversion errors. The advisory describes an attack requiring authenticated accesss.
+
+**Potential Impact:** An affected PostgreSQL service could experience denial of service if the vulnerability's prerequisites are satisfied.
+
+**Supporting Evidence:**
+- `scans/nmap-service-versions.txt`
+- Local package, executable, SQL-query and listener outputs inspected in the terminal; screenshots not yet collected. 
+
+**Verification Status:** Installed package version, client version, running server version and listening service were verified. The package predates the documented Ubuntu security update. Manually applied patches and exploitability were not independently verified. No exploitation or remediation was performed.
+
+**OpenSSH Verification Status:** Security-advisory assessment remains pending.</br>
 
 **Overall Risk:** Provisional — additional components under review.</br>
 
@@ -364,7 +397,7 @@ The following services require further security assessment:
 - `screenshots/vsftpd-binary-verification.png`
 - `screenshots/proftpd-verification.png`
 - `screenshots/mysql-version-verification.png`
--  `screenshots/software-versions.png` (to be added)</br>
+- `screenshots/software-versions.png` (to be added)</br>
 
 **References:**
 - `https://ubuntu.com/security/notices/USN-1199-1`
