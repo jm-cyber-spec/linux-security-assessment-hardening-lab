@@ -165,7 +165,7 @@ journalctl
 
 **Purpose:** Inspect legacy network services, their configuration, and the processes responsible for listening on network ports.
 
-**Commands Executed:**
+**Commands used:**
 
 ```
 sudo netstat -tulnp | grep -E ':(512|513|514)\b'
@@ -188,7 +188,7 @@ cat /etc/hosts.deny
 ```
 Displays TCP Wrappers access control configuration files.
 
-**Related Findings:** F-01 — Telnet Service Exposure, F-03 — Excessive Network Service Exposure.</br>
+**Related Findings:** F-01 — Telnet Service Exposure, F-03 — Excessive Network Service Exposure.
 
 **Evidence:**
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
@@ -201,7 +201,7 @@ Displays TCP Wrappers access control configuration files.
 
 **Purpose:** Identify the operating system release and installed Apache package versions for comparison against Ubuntu security advisories.
 
-**Commands Executed:**
+**Commands used:**
 
 ```
 cat /etc/lsb-release
@@ -213,7 +213,7 @@ dpkg -l 'apache2*'
 ```
 Lists Apache-related packages and their package installation states and versions.
 
-**Related Findings:** F-04.1 — Apache HTTP Server.</br>
+**Related Findings:** F-04.1 — Apache HTTP Server.
 
 **Evidence:**
 - [Ubuntu Version Screenshot](screenshots/ubuntu-version.png)
@@ -248,7 +248,7 @@ sha256sum /usr/sbin/vsftpd
 ```
 Calculates the executable's SHA-256 fingerprint for potential comparison against a trusted reference.
 
-**Related Findings:** F-04.2 — vsftpd</br>
+**Related Findings:** F-04.2 — vsftpd
 
 **Evidence:**
 - [vsftpd Binary Verification Screenshot](screenshots/vsftpd-binary-verification.png)
@@ -257,11 +257,11 @@ Calculates the executable's SHA-256 fingerprint for potential comparison against
 
 #### 4.6 ProFTPD Service and Configuration Inspection
 
-**Executed on:** Metaspolitable2 (Target VM)
+**Executed on:** Metasploitable2 (Target VM)
 
 **Purpose:** Identify the installed ProFTPD version, listening service and relevant SQL module configuration.
 
-**Commands Executed:**
+**Commands used:**
 
 ```
 dpkg -l proftpd
@@ -295,9 +295,9 @@ sudo /usr/sbin/proftpd -t
 ```
 Checks ProFTPD configuration syntax without starting a new service.
 
-**Related Findings:** F-04.3 — ProFTPD</br>
+**Related Findings:** F-04.3 — ProFTPD
 
-**Evidence:** [ProFTPD Verification Screenshot](acreenshots/proftpd-verification.png)
+**Evidence:** [ProFTPD Verification Screenshot](screenshots/proftpd-verification.png)
 
 
 #### 4.7 MySQL Server Version and Listener Inspection
@@ -306,7 +306,7 @@ Checks ProFTPD configuration syntax without starting a new service.
 
 **Purpose:** Verify installed MySQL package versions, executable versions and network-listener configuration.
 
-**Commands Executed:**
+**Commands used:**
 
 ```
 dpkg -l 'mysql-server*' | grep '^ii'
@@ -324,7 +324,7 @@ sudo netstat -tlnp | grep ':3306'
 ```
 Identifies the process listening on MySQL's TCP port 3306.
 
-**Related Findings:** F-04.4 — MySQL</br>
+**Related Findings:** F-04.4 — MySQL
 
 **Evidence:** [MySQL Version Verification Screenshot](screenshots/mysql-version-verification.png)
 
