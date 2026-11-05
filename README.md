@@ -34,12 +34,12 @@ See [Lab Setup](lab-setup.md) for setup instructions and network configuration.
 Additional tools will be documented when their use in this project is confirmed.
 
 ## Project Structure
-* lab-setup.md — Lab setup and network configuration.
-* findings.md — Security observations, evidence, impact, and validation status.
-* hardening-recommendations.md — Recommended defensive improvements and remediation priorities.
-* commands-used.md — Commands used and explanations.
-* scans/ — Nmap output files
-* screenshots/ — Supporting screenshots and sanitized evidence.
+* [Lab Setup](lab-setup.md) — Virtual Lab setup and network configuration.
+* [Security Findings](findings.md) — Security observations, supporting evidence, impact, and verification limitations.
+* [Hardening Recommendations](hardening-recommendations.md) — Recommended defensive improvements and remediation priorities.
+* [Commands Used](commands-used.md) — Commands executed during the assessment and their purposes.
+* [Scan results](scans) — Saved Nmap scan outputs
+* [Screenshots](screenshots) — Supporting visual evidence.
 
 ## Methodology
 * Establish the lab environment and define the assessment scope.
@@ -47,7 +47,7 @@ Additional tools will be documented when their use in this project is confirmed.
 * Review relevant Linux security settings and permissions where access permits.
 * Document observations with supporting evidence.
 * Evaluate potential impact and recommend defensive controls.
-* Validate implemented remediation and document the results.
+* Plan future remediation validation and documentation.
 
 ## Scope and Safety
 
@@ -59,7 +59,7 @@ Metasploitable2 is intentionally vulnerable and must be isolated from untrusted 
 
 The assessment documented security observations relating to:
 - Telnet service exposure.
-- Authenticate and password policy configuration.
+- Authentication and password policy configuration.
 - Excessive network service exposure.
 - Potentially outdated software components.
 - User privileges and privilege separation.
