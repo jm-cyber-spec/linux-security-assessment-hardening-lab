@@ -363,10 +363,48 @@ Displays PAM authentication and password policy configuration.
 **Related Findings:** F-02 — Authentication and Password Policy.
 
 **Evidence:**
-- [Password Aging Policy](screenshots/password-aging-policy)
+- [Password Aging Policy](screenshots/password-aging-policy.png)
 - [Password Policy Configuration](screenshots/password-policy-configuration.png)
 - [Authentication Configuration](screenshots/authentication-configuration.png)
 
+
+#### 4.9 User Privileges and File Permission Inspection
+
+**Executed on:** Metasploitable2 (Target VM)
+
+**Purpose:** Inspect user identity, administrative privileges, group memberships, and permissions on security-sensitive Linux files.
+
+**Commands used:**
+
+```
+whoami
+id
+```
+Displays the current user identity, user ID, group ID, and group memberships.
+
+```
+sudo -l
+```
+Lists the commands the current user is authorized to execute through `sudo`.
+
+```
+getent group sudo
+getent group admin
+```
+Checks membership information for the `sudo` and `admin` groups.
+
+```
+ls -l /etc/passwd /etc/shadow /etc/sudoers
+```
+Displays permissions and ownership of security-sensitive account and privilege configuration files.
+
+**Related Findings:** F-05 — Privilege Separation
+
+**Evidence:** [Sudo Privileges Screenshot](screenshots/sudo-privileges.png)
+
+Shows the output of `sudo -l`, confirming the inspected user's sudo privileges.
+
+**Evidence Limitations:** The remaining commands were inspected during the lab but their outputs are not included in this scrreenshot.
 
 ---
 
