@@ -353,7 +353,7 @@ Network-listener inspection identified the PostgreSQL process listening on `0.0.
 
 Ubuntu Security Notice USN-753-1 identifies `8.3.7-0ubuntu8.04.1` as the security-fix package version for Ubuntu 8.04. The installed package predates that update.
 
-CVE-2009-0922 concerns a potential denial of service condition involving PostgreSQL encoding conversion errors. The advisory describes an attack requiring authenticated accesss.
+CVE-2009-0922 concerns a potential denial of service condition involving PostgreSQL encoding conversion errors. The advisory describes an attack requiring authenticated access.
 
 **Potential Impact:** An affected PostgreSQL service could experience denial of service if the vulnerability's prerequisites are satisfied.
 
@@ -388,7 +388,7 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 - ProFTPD package, executable, configuration syntax, and listening-port verification (verified; configuration evidence screenshots pending).
 - MySQL package version, server executable version, listening-port verification, and security-advisory comparison (verified).
 - OpenSSH security advisory and patch applicability assessment (pending).
-- PostgreSQL package version and security advisory verification (pending).</br>
+- PostgreSQL package, client and running-server version, network listener inspection, and security-advisory comparison (verified; screenshots pending).</br>
 
 **Evidence:**
 - `scans/nmap-service-versions.txt`
@@ -418,7 +418,9 @@ The Ubuntu 8.04 operating system release and installed Apache package versions w
 
 **MySQL:** The installed server package version `5.0.51a-3ubuntu5` predates the documented security fix `5.0.51a-3ubuntu5.4` in Ubuntu Security Notice USN-671-1. The running MySQL service was confirmed listening on TCP port 3306.
 
-**Remaining Components:** The OpenSSH package version was identified locally, but its security advisory assessment remains pending. PostgreSQL package verification and security-advisory assessment also remain pending.
+**PostgreSQL:** The package version `8.3.1`, TCP port 5432 listeners, and comparison against Ubuntu Security Notice USN-753-1 were verified. The installed package predates the documented security update.
+
+**Remaining Components:**  OpenSSH package version was identified locally, but its security advisory assessment remains pending.
 
 **Assessment Limitations:** Exploitability was not independently tested and the possibility of manually applied security patches has not been ruled out. No exploitation or remediation was performed.
 
