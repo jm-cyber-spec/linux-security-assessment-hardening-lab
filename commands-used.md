@@ -404,6 +404,41 @@ Displays permissions and ownership of security-sensitive account and privilege c
 
 Shows the output of `sudo -l`, confirming the inspected user's sudo privileges.
 
+
+#### 4.10 PostgreSQL Package, Server and Listener Inspection
+
+**Executed On:** Metasploitable2 (Target VM)
+
+**Purpose:** Verify installed PostgreSQL packages, the client and running sever versions, and the network listener.
+
+**Commands used:**
+
+```
+dpkg -l 'postgresql*'
+```
+Lists PostgreSQL related packages and their installation states.
+
+```
+psql --version
+```
+Displays the PostgreSQL client version.
+
+```
+sudo netstat -tlnp | grep ':5432'
+```
+Identifies the process listening on TCP port 5432.
+
+```
+sudo -u postgres psql -c "SELECT version();"
+```
+Queries the running PostgreSQL server to retrieve its reported version.
+
+**Related Findings:** F-04.5 — PostgreSQL Security Update Assessment.
+
+**Evidence:**
+- [Nmap Service Version Scan](scans/nmap-service-versions.txt)
+- Local package, client, listener, and SQL-query outputs were inspected in the terminal. Screenshots have not yet been collected.
+
 **Evidence Limitations:** The remaining commands were inspected during the lab but their outputs are not included in this screenshot.
 
 ---
