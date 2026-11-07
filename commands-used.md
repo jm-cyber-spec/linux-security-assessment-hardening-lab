@@ -409,7 +409,7 @@ Shows the output of `sudo -l`, confirming the inspected user's sudo privileges.
 
 **Executed On:** Metasploitable2 (Target VM)
 
-**Purpose:** Verify installed PostgreSQL packages, the client and running sever versions, and the network listener.
+**Purpose:** Verify installed PostgreSQL packages, the client and running server versions, and the network listener.
 
 **Commands used:**
 
