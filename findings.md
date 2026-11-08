@@ -403,7 +403,7 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 
 **Verification Status:** Installed package version, client version, running server version and listening service were verified. The package predates the documented Ubuntu security update. Manually applied patches and exploitability were not independently verified. No exploitation or remediation was performed.
 
-**OpenSSH Verification Status:** Security-advisory assessment remains pending.</br>
+**OpenSSH Verification Status:** Installed OpenSSH and OpenSSL package versions were verified and compared against Ubuntu Security Notices USN-612-1 and USN-612-2. The installed OpenSSH package predates the documented security update. Existing SSH keys were not assessed for weakness, and manually applied patches and exploitability remain unverified.</br>
 
 **Overall Risk:** Provisional — additional components under review.</br>
 
@@ -427,7 +427,7 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 - vsftpd executable version and SHA-256 fingerprint (verified).
 - ProFTPD package, executable, configuration syntax, and listening-port verification (verified; configuration evidence screenshots pending).
 - MySQL package version, server executable version, listening-port verification, and security-advisory comparison (verified).
-- OpenSSH security advisory and patch applicability assessment (pending).
+- OpenSSH and OpenSSL package versions, executable version, and security advisory comparison (verified; screenshots pending). SSH weak-key assessment could not be completed because the verification utility was not found in the command search path.
 - PostgreSQL package, client and running-server version, network listener inspection, and security-advisory comparison (verified; screenshots pending).</br>
 
 **Evidence:**
