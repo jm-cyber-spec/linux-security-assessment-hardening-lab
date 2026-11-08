@@ -446,7 +446,7 @@ Queries the running PostgreSQL server to retrieve its reported version.
 
 **Purpose:** Verify the installed OpenSSH and OpenSSL package versions, inspect the OpenSSH executable version, and determine whether local SSH weak-key assessment utilities are available.
 
-**Command used:**
+**Commands used:**
 
 ```
 dpkg-query -W -f='${Package} ${Version}\n' openssh-server
@@ -456,7 +456,7 @@ Confirms the installed OpenSSH server package and its version.
 ```
 /usr/sbin/sshd -V
 ```
-Attempts to display the OpenSSH server version. The installed version does not support -v, but the resulting error output includes the OpenSSH and OpenSSL version information.
+Attempts to display the OpenSSH server version. The installed version does not support -V, but the resulting error output includes the OpenSSH and OpenSSL version information.
 
 ```
 dpkg-query -W -f='${Package} ${Version}\n' libssl0.9.8
@@ -469,22 +469,19 @@ command -v ssh-vulnkey
 Checks whether `ssh-vulnkey` is available in the shell's command search path. No path was returned.
 
 ```
-dpkg -l openssh-blacklist
-openssh-blacklist-extra
+dpkg -l openssh-blacklist openssh-blacklist-extra
 ```
 Checks the local package database for the specified blacklist packages. No matching packages were found.
 
 **Related Findings:** F-04.5 — OpenSSH Security Update Assessment
 
 **Evidence:**
-- [Nmap Service Version Scan](scans/nmap-scan-versions.txt)
+- [Nmap Service Version Scan](scans/nmap-service-versions.txt)
 - OpenSSH and OpenSSL package inspection, executable version inspection, and utility-availability checks were performed in the target terminal. Screenshots of these outputs have not yet been collected.
 
 **Security References:**
 - Ubuntu Security Notice USN-612-1
 - Ubuntu Security Notice USN-612-2 
-
-**Evidence Limitations:** The remaining commands were inspected during the lab but their outputs are not included in this screenshot.
 
 ---
 
