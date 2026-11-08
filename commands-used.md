@@ -407,7 +407,7 @@ Shows the output of `sudo -l`, confirming the inspected user's sudo privileges.
 
 #### 4.10 PostgreSQL Package, Server and Listener Inspection
 
-**Executed On:** Metasploitable2 (Target VM)
+**Executed on:** Metasploitable2 (Target VM)
 
 **Purpose:** Verify installed PostgreSQL packages, the client and running server versions, and the network listener.
 
@@ -438,6 +438,51 @@ Queries the running PostgreSQL server to retrieve its reported version.
 **Evidence:**
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
 - Local package, client, listener, and SQL-query outputs were inspected in the terminal. Screenshots have not yet been collected.
+
+
+#### 4.11 OpenSSH Package and Security Verification
+
+**Executed on:** Metasploitable2 (Target VM)
+
+**Purpose:** Verify the installed OpenSSH and OpenSSL package versions, inspect the OpenSSH executable version, and determine whether local SSH weak-key assessment utilities are available.
+
+**Command used:**
+
+```
+dpkg-query -W -f='${Package} ${Version}\n' openssh-server
+```
+Confirms the installed OpenSSH server package and its version.
+
+```
+/usr/sbin/sshd -V
+```
+Attempts to display the OpenSSH server version. The installed version does not support -v, but the resulting error output includes the OpenSSH and OpenSSL version information.
+
+```
+dpkg-query -W -f='${Package} ${Version}\n' libssl0.9.8
+```
+Confirms the installed OpenSSL library package version for comparison against the Ubuntu security advisory.
+
+```
+command -v ssh-vulnkey
+```
+Checks whether `ssh-vulnkey` is available in the shell's command search path. No path was returned.
+
+```
+dpkg -l openssh-blacklist
+openssh-blacklist-extra
+```
+Checks the local package database for the specified blacklist packages. No matching packages were found.
+
+**Related Findings:** F-04.5 — OpenSSH Security Update Assessment
+
+**Evidence:**
+- [Nmap Service Version Scan](scans/nmap-scan-versions.txt)
+- OpenSSH and OpenSSL package inspection, executable version inspection, and utility-availability checks were performed in the target terminal. Screenshots of these outputs have not yet been collected.
+
+**Security References:**
+- Ubuntu Security Notice USN-612-1
+- Ubuntu Security Notice USN-612-2 
 
 **Evidence Limitations:** The remaining commands were inspected during the lab but their outputs are not included in this screenshot.
 
