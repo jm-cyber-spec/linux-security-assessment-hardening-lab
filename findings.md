@@ -74,8 +74,8 @@ An authentication configuration review of the Metasploitable2 target ("192.168.5
 - The "root" and "msfadmin" accounts have passwords set, with last recorded password changes on 18 May 2010 and 16 March 2010, respectively.
 - Both accounts have a maximum password age of 99,999 days, effectively disabling routine password expiry through this setting.
 - `/etc/login.defs` specifies `PASS_MAX_DAYS 99999`, `PASS_MIN_DAYS 0`, and `PASS_WARN_AGE 7`.
-- The active `/etc/pam.d/common-password` configuration contains `pam_unix.so nullok obscure md5`, indicating legacy MD5-based password hashing is configured, basic password-strength checks are enabled, and empty passwords are permitted under applicable PAM conditions.
-- `/etc/pam.d/common-auth` uses `pam_unix.so nullok_secure`. No `pam_tally` or `pam_faillock` rule was observed in this file.
+- The `/etc/pam.d/common-password` configuration contains `pam_unix.so nullok obscure md5`. These options indicate a legacy password-management configuration; however, the effective password-hashing behavior, password-strength enforcement, and acceptance of empty passwords were not independently verified.
+- The `/etc/pam.d/common-auth` configuration was inspected and contains a `pam_unix.so` authentication rule with an option resembling `nullok_secure`. The exact option spelling and its behavior on the installed PAM version require further verification. No `pam_tally` or `pam_faillock` rule was observed in the inspected file; authentication controls elsewhere were not comprehensively assessed.
 
 **Risk:** Provisional — further assessment required.
 
@@ -189,7 +189,7 @@ The package comparison supports a finding of a missing documented security updat
 
 **Supporting Evidence:**
 - `screenshots/ubuntu-version.png`
-- `screenshots/apache-package-versions.png`</br>
+- `screenshots/apache-package-versions.png`
 
 
 #### F-04.2 — vsftpd 2.3.4: Binary Verification
@@ -221,7 +221,7 @@ The SHA-256 hash was collected to identify the exact executable examined.
 The reported version alone does not establish that the backdoor is present. The executable has not been matched against a trusted reference binary, and no exploitation was performed.
 
 **Supporting Evidence:**
-- `screenshots/vsftpd-binary-verification.png`</br>
+- `screenshots/vsftpd-binary-verification.png`
 
 
 #### F-04.3 — ProFTPD 1.3.1: Service and Configuration Verification
@@ -262,7 +262,7 @@ If an applicable vulnerability is present and its prerequisites are satisfied, t
 **Verification Status:**
 - Installed package, executable version, configuration syntax, and listening service (verified).
 - SQL module runtime state, security-patch applicability, and CVE exploitability remain unconfirmed.
-- No exploitation or remediation was performed.</br>
+- No exploitation or remediation was performed.
 
 
 #### F-04.4 — MySQL 5.0: Security Update Assessment
@@ -318,10 +318,10 @@ Actual exploitability depends on the affected functionality, user privileges, co
 **Verification Status:**
 - The installed MySQL package version, server executable version, and listening service (verified).
 - The installed package predates the security fix documented in USN-671-1. Manually applied patches and exploitability were not independently verified.
-- No exploitation or remediation was performed.</br>
+- No exploitation or remediation was performed.
 
 
-#### F-04.5 — Remaining Software Components Under Investigation
+#### F-04.5 — OpenSSH and PostgreSQL Security Update Assessments
 
 **OpenSSH:** Security Update Assessment.
 
@@ -403,14 +403,14 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 
 **Verification Status:** Installed package version, client version, running server version and listening service were verified. The package predates the documented Ubuntu security update. Manually applied patches and exploitability were not independently verified. No exploitation or remediation was performed.
 
-**OpenSSH Verification Status:** Installed OpenSSH and OpenSSL package versions were verified and compared against Ubuntu Security Notices USN-612-1 and USN-612-2. The installed OpenSSH package predates the documented security update. Existing SSH keys were not assessed for weakness, and manually applied patches and exploitability remain unverified.</br>
+**OpenSSH Verification Status:** Installed OpenSSH and OpenSSL package versions were verified and compared against Ubuntu Security Notices USN-612-1 and USN-612-2. The installed OpenSSH package predates the documented security update. Existing SSH keys were not assessed for weakness, and manually applied patches and exploitability remain unverified.
 
-**Overall Risk:** Provisional — additional components under review.</br>
+**Overall Risk:** Provisional — additional components under review.
 
 **Overall Potential Impact:**
 
 - Unsupported or unpatched network-facing software may expose the system to known vulnerabilities, potentially resulting in denial of service, unauthorized access, or system compromise.
-- The actual impact depends on the affected component, configuration, applicable security fixes.</br>
+- The actual impact depends on the affected component, configuration, applicable security fixes.
 
 **Recommendation:**
 - Verify installed software versions and security patch levels.
@@ -418,7 +418,7 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 - Replace unnecessary legacy FTP service with supported alternatives, using SFTP where appropriate.
 - Replace unsupported operating systems and services with supported alternatives.
 - Apply available security updates in an appropriately maintained environment.
-- Disable unnecessary network-facing services.</br>
+- Disable unnecessary network-facing services.
 
 **Evidence Required:**
 - Nmap service version detection results identifying exposed services and their reported versions (collected).
@@ -428,7 +428,7 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 - ProFTPD package, executable, configuration syntax, and listening-port verification (verified; configuration evidence screenshots pending).
 - MySQL package version, server executable version, listening-port verification, and security-advisory comparison (verified).
 - OpenSSH and OpenSSL package versions, executable version, and security advisory comparison (verified; screenshots pending). SSH weak-key assessment could not be completed because the verification utility was not found in the command search path.
-- PostgreSQL package, client and running-server version, network listener inspection, and security-advisory comparison (verified; screenshots pending).</br>
+- PostgreSQL package, client and running-server version, network listener inspection, and security-advisory comparison (verified; screenshots pending).
 
 **Evidence:**
 - `scans/nmap-service-versions.txt`
@@ -437,14 +437,14 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 - `screenshots/vsftpd-binary-verification.png`
 - `screenshots/proftpd-verification.png`
 - `screenshots/mysql-version-verification.png`
-- `screenshots/software-versions.png` (to be added)</br>
+- `screenshots/software-versions.png` (to be added)
 
 **References:**
 - `https://ubuntu.com/security/notices/USN-1199-1`
 - `https://ubuntu.com/security/CVE-2011-3192`
 - `https://nvd.nist.gov/vuln/detail/CVE-2011-2523`
 - `https://nvd.nist.gov/vuln/detail/CVE-2010-4652`
-- `https://ubuntu.com/security/notices/USN-671-1`</br>
+- `https://ubuntu.com/security/notices/USN-671-1`
 
 **Overall Verification Status:** 
 
@@ -458,9 +458,9 @@ The Ubuntu 8.04 operating system release and installed Apache package versions w
 
 **MySQL:** The installed server package version `5.0.51a-3ubuntu5` predates the documented security fix `5.0.51a-3ubuntu5.4` in Ubuntu Security Notice USN-671-1. The running MySQL service was confirmed listening on TCP port 3306.
 
-**PostgreSQL:** The package version `8.3.1`, TCP port 5432 listeners, and comparison against Ubuntu Security Notice USN-753-1 were verified. The installed package predates the documented security update.
+**PostgreSQL:** The installed package version `8.3.1-1`, TCP port 5432 listeners, and comparison against Ubuntu Security Notice USN-753-1 were verified. The installed package predates the documented security update.
 
-**Remaining Components:**  OpenSSH package version 1:4.7p1-8ubuntu1 and OpenSSL library version 0.9.8g-4ubuntu3.18 were also verified and compared against Ubuntu Security Notice USN-612-1 and USN-612-2. The OpenSSH package predates the documented security update, while the OpenSSL package is later than the initial security fix. Existing SSH keys were not assessed for weakness. Exploitability and manually applied patches remain unverified.
+**OpenSSH:**  OpenSSH package version 1:4.7p1-8ubuntu1 and OpenSSL library version 0.9.8g-4ubuntu3.18 were also verified and compared against Ubuntu Security Notice USN-612-1 and USN-612-2. The OpenSSH package predates the documented security update, while the OpenSSL package is later than the initial security fix. Existing SSH keys were not assessed for weakness. Exploitability and manually applied patches remain unverified.
 
 **Assessment Limitations:** Exploitability was not independently tested and the possibility of manually applied security patches has not been ruled out. No exploitation or remediation was performed.
 
