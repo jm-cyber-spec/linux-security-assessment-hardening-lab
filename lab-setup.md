@@ -98,7 +98,7 @@ See [Commands Used](commands-used.md) for the commands documented during this as
 
 The virtual lab environment has been configured, and network discovery, service inspection, authentication review, privilege inspection, and selected software-version assessments have been documented.
 
-The assessment remains in progress. Further verification of selected software components and security configurations is pending.
+The initial software package and security-advisory assessments have been documented, including Apache, vsftpd, ProFTPD, MySQL, PostgreSQL, and OpenSSH. Some vulnerability applicability questions, authentication and privilege-related observations, and supporting evidence collection remain unresolved. These limitations are recorded in the security findings.
 
 No exploitation or remediation has been performed as part of the documented assessment.
 
