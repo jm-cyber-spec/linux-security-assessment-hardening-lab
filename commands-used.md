@@ -124,17 +124,39 @@ ps aux
 
 **Usage:** Helps inspect process ownership and identify services requiring further review.
 
-#### 3.6 Review Listening Network Services
+#### 3.6 Inspecting Listening Network Sockets
+
+**Executed on:** Metasploitable2 (Target VM)
+
+**Purpose:** Identify listening TCP and UDP sockets and verify network service exposure.
+
+**Commands used:**
+
+```
+command -v ss
+```
+Confirmed that the utility is available at `/sbin/ss`
 
 ```
 ss -tuln
 ```
+Displayed TCP and UDP sockets and completed without errors.
 
-**Purpose:** Displays listening TCP and UDP sockets.
+```
+ss -tuln | grep -E ':(21|22|23|80|3306|5432) [[:space:]]'
+```
+Displayed selected listening ports associated with FTP, SSH, Telnet, HTTP, MySQL, and PostgreSQL.
 
-**Usage:** Helps identify services listening on network ports.
+These commands were executed during the final documentation review, rather than during the original network assessment.
 
-**Note:** Status: Reference command, execution not verified during this assessment.
+**Related Findings:**
+- [F-01 — Telnet Service Enabled](findings.md)
+- [F-03 — Excessive Service Exposure](findings.md)
+- [F-04 — Potentially Outdated Software](findings.md)
+
+**Evidence:**
+- [Nmap Service Version Scan](scans/nmap-service-versions.txt)
+- `ss` command results were verified in the target terminal. A screenshot of this verification has not yet been collected.
 
 ---
 
