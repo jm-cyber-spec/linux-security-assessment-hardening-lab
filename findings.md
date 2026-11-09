@@ -75,7 +75,7 @@ An authentication configuration review of the Metasploitable2 target ("192.168.5
 - Both accounts have a maximum password age of 99,999 days, effectively disabling routine password expiry through this setting.
 - `/etc/login.defs` specifies `PASS_MAX_DAYS 99999`, `PASS_MIN_DAYS 0`, and `PASS_WARN_AGE 7`.
 - The `/etc/pam.d/common-password` configuration contains `pam_unix.so nullok obscure md5`. These options indicate a legacy password-management configuration; however, the effective password-hashing behavior, password-strength enforcement, and acceptance of empty passwords were not independently verified.
-- The `/etc/pam.d/common-auth` configuration was inspected and contains a `pam_unix.so` authentication rule with an option resembling `nullok_secure`. The exact option spelling and its behavior on the installed PAM version require further verification. No `pam_tally` or `pam_faillock` rule was observed in the inspected file; authentication controls elsewhere were not comprehensively assessed.
+- The `/etc/pam.d/common-auth` configuration was inspected and contains a `pam_unix.so` authentication rule with an option resembling `nullok_secure`. The exact option has not been verified as valid for the installed PAM version, and its effect on authentication remains unconfirmed. No `pam_tally` or `pam_faillock` rule was observed in the inspected file; authentication controls elsewhere were not comprehensively assessed.
 
 **Risk:** Provisional — further assessment required.
 
@@ -405,7 +405,7 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 
 **OpenSSH Verification Status:** Installed OpenSSH and OpenSSL package versions were verified and compared against Ubuntu Security Notices USN-612-1 and USN-612-2. The installed OpenSSH package predates the documented security update. Existing SSH keys were not assessed for weakness, and manually applied patches and exploitability remain unverified.
 
-**Overall Risk:** Provisional — additional components under review.
+**Overall Risk:** Provisional — patch applicability and exploitability remain unverified.
 
 **Overall Potential Impact:**
 
