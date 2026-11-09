@@ -85,9 +85,9 @@ No exploitation or remediation was performed as part of the documented assessmen
 - Documentation of findings and supporting evidence.
 
 **Pending:**
-- Remaining software verification, including OpenSSH and PostgreSQL.
-- Further validation of selected authentication and privilege-related observations.
-- Repository documentation consistency review.
+- Further verification of selected authentication and privilege-related observations.
+- Collection of remaining supporting screenshots for completed terminal inspections.
+- Final repository documentation consistency review.
 - Controlled hardening and remediation validation, if undertaken.
 
 This repository is being developed as a cybersecurity learning and portfolio project.
