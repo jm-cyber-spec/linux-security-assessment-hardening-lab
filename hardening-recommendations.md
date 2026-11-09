@@ -1,7 +1,7 @@
 ## Linux Security Hardening Recommendations
 
 ### 1. Purpose
-This document outlines recommended security improvements based on the assessment areas identified in findings.md
+This document outlines recommended security improvements based on the assessment areas identified in [Security Findings](findings.md).
 
 The recommendations aim to improve system security, reduce unnecessary exposure, strengthen access controls, and support security monitoring.
 
@@ -13,7 +13,7 @@ These recommendations are proposed actions and should not be considered implemen
 
 **2.1 Disable Telnet and Use Secure Remote Administration**
 
-**Related Finding:** F-01 — Telnet Service Exposure
+**Related Finding:** [F-01 — Telnet Service Exposure](findings.md)
 
 **Risk Addressed:** Unencrypted remote communication
 
@@ -50,7 +50,7 @@ These recommendations are proposed actions and should not be considered implemen
 
 **2.3 Reduce Unnecessary Network Services**
 
-**Related Finding:** F-03 — Excessive Network Service Exposure
+**Related Finding:** [F-03 — Excessive Network Service Exposure](findings.md)
 
 **Risk Addressed:** Increased attack surface from unnecessary services.
 
@@ -68,7 +68,7 @@ These recommendations are proposed actions and should not be considered implemen
 
 **2.4 Maintain Software and Security Updates**
 
-**Related Finding:** F-04 — Potentially Outdated Software 
+**Related Finding:** [F-04 — Potentially Outdated Software](findings.md)
 
 **Risk Addressed:** Exposure to known vulnerabilities in outdated software. 
 
@@ -107,7 +107,7 @@ These recommendations are proposed actions and should not be considered implemen
 
 **2.6 Establish a Linux Security Hardening Baseline**
 
-**Related Finding:** F-06 — Security Hardening Baseline 
+**Related Finding:** [F-06 — Security Hardening Baseline](findings.md)
 
 **Risk Addressed:** Inconsistent security configurations and insufficient defensive controls.
 
