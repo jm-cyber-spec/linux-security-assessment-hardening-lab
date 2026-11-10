@@ -41,7 +41,13 @@ Local inspection of `/etc/inetd.conf` on Metasploitable2 identified an uncomment
 
 The Nmap observation supports that Telnet is exposed on TCP port 23. No Telnet authentication attempt or credential interception was performed.
 
-**Risk:** Provisional — pending further assessment.
+**Risk:**
+
+**Severity:** Medium — Telnet exposes unencrypted communication within the isolated Host-Only network. The potential impact would increase if the service were reachable from less-trusted networks.
+
+**Evidence Confidence:** High — Nmap identified the Telnet service on TCP port 23, local inspection confirmed an enabled Telnet configuration entry, and subsequent socket inspection confirmed a listener on port 23.
+
+**Assessment Limitations:** No Telnet authentication attempt, packet interception, or credential disclosure was performed. Network access restrictions beyond the documented lab configuration were not comprehensively assessed. 
 
 **Potential Impact:** 
 - Credentials may be exposed to network interception.
@@ -58,9 +64,10 @@ The Nmap observation supports that Telnet is exposed on TCP port 23. No Telnet a
 - Service detection results confirming the Telnet service.
 
 **Suggested Evidence:** 
-- `scans/nmap-service-versions.txt`
-- `screenshots/legacy-services-configuration.png`
-- `screenshots/telnet-scan.png` (to be added)
+- [Nmap Service Version Scan](scans/nmap-service-versions.txt)
+- [Legacy Services Configuration](screenshots/legacy-services-configuration.png)
+- [Listening Network Sockets Verification](screenshots/ss-listening-ports-verification.png)
+- (`screenshots/telnet-scan.png`)(to be added)
 
 **Verification Status:** Nmap confirmed TCP port 23 was open and identified the Telnet service. Local configuration inspection also identified an enabled Telnet entry in `/etc/inetd.conf`. No exploitation or remediation was performed. 
 
