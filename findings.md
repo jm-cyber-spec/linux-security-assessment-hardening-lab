@@ -81,7 +81,11 @@ An authentication configuration review of the Metasploitable2 target ("192.168.5
 - The `/etc/pam.d/common-password` configuration contains `pam_unix.so nullok obscure md5`. These options indicate a legacy password-management configuration; however, the effective password-hashing behavior, password-strength enforcement, and acceptance of empty passwords were not independently verified.
 - The `/etc/pam.d/common-auth` configuration was inspected and contains a `pam_unix.so` authentication rule with the `nullok_secure` option. The effective behavior of this option has not been verified for the installed PAM version, and its effect on authentication remains unconfirmed. No `pam_tally` or `pam_faillock` rule was observed in the inspected file; authentication controls elsewhere were not comprehensively assessed.
 
-**Risk:** Provisional — further assessment required.
+**Severity:** Medium — The observed password-aging settings and legacy authentication configuration may weaken account security. The actual impact depends on password strength, effective PAM behavior, and other authentication controls.
+
+**Evidence Confidence:** Medium — Password-aging settings and selected PAM configuration entries were inspected. However, effective password-policy enforcement and authentication behavior were not independently tested.
+
+**Assessment Limitations:** Actual password strength, password-hash formats, empty-password authentication, account-lockout behavior, and authentication controls outside the inspected configuration files remain unverified. No password guessing or exploitation was performed.
 
 **Potential Impact:**
 - Weak password-management controls can increase the likelihood of unauthorized access.
