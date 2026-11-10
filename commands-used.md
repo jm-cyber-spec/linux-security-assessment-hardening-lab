@@ -156,7 +156,7 @@ These commands were executed during the final documentation review, rather than 
 
 **Evidence:**
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
-- [Listening Network Sockets Verification](screenshots/ss-listening-ports-verification)
+- [Listening Network Sockets Verification](screenshots/ss-listening-ports-verification.png)
 
 ---
 
