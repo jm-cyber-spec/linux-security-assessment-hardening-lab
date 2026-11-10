@@ -143,7 +143,7 @@ ss -tuln
 Displayed TCP and UDP sockets and completed without errors.
 
 ```
-ss -tuln | grep -E ':(21|22|23|80|3306|5432) [[:space:]]'
+ss -tuln | grep -E ':(21|22|23|80|3306|5432)[[:space:]]'
 ```
 Displayed selected listening ports associated with FTP, SSH, Telnet, HTTP, MySQL, and PostgreSQL.
 
@@ -163,28 +163,9 @@ These commands were executed during the final documentation review, rather than 
 ### 4. Service and Log Inspection
 
 
-#### 4.1 Review System Services
+#### 4.1 — 4.2 — Reserved Sections (Legacy System Compatibility)
 
-```
-systemctl --type=service --state=running
-```
-
-**Purpose:** Lists running systemd services.
-
-**Note:** Status: Reference command for systemd-based Linux distributions; not verified on Metasploitable2.
-
-
-#### 4.2 Review System Logs
-
-```
-journalctl
-```
-
-**Purpose:** Displays logs collected by the systemd journal.
-
-**Note:** These commands depend on systemd and may not be available on older Linux distributions.
-
-Status: Reference command for systemd-based Linux distributions; not verified on Metasploitable2. 
+The original reference entries for `systemctl` and `journalctl` were removed because Metasploitable2 runs Ubuntu 8.04, which predates systemd. Service and configuration inspection performed in this lab is documented in Section 4.3. 
 
 
 #### 4.3 Legacy Network Service and Configuration Inspection
