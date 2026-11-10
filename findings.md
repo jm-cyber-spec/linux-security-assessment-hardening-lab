@@ -424,22 +424,27 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 
 **Evidence Required:**
 - Nmap service version detection results identifying exposed services and their reported versions (collected).
-- Ubuntu operating system identification (verified).
-- Apache package inventory and advisory comparison (verified).
-- vsftpd executable version and SHA-256 fingerprint (verified).
-- ProFTPD package, executable, configuration syntax, and listening-port verification (verified; configuration evidence screenshots pending).
-- MySQL package version, server executable version, listening-port verification, and security-advisory comparison (verified).
-- OpenSSH and OpenSSL package versions, executable version, and security advisory comparison (verified). SSH weak-key assessment could not be completed because the verification utility was not found in the command search path.
-- PostgreSQL package, running-server version, and TCP listener verification screenshots have been collected. Patch applicability and exploitability remain unverified.
+- Ubuntu operating system identification (verified; screenshot collected).
+- Apache package inventory and advisory comparison (verified; screenshot collected).
+- vsftpd executable version and SHA-256 fingerprint (verified; screenshot collected). Binary provenance and CVE applicability remain unverified.
+- ProFTPD package, executable, configuration syntax, and listening-port verification (verified; existing screenshot collected). Additional configuration screenshots remain pending.
+- MySQL package version, server executable version, listening-port verification, and security-advisory comparison (verified; screenshot collected).
+- OpenSSH and OpenSSL package versions, executable version, and security advisory comparison (verified; screenshot collected). Existing SSH keys were not assessed for weakness.
+- PostgreSQL package, running-server version, listening-port verification, and security-advisory comparison (verified; screenshot collected).
+- Manual patch applicability and exploitability remain unverified for the relevant components.
 
 **Evidence:**
-- `scans/nmap-service-versions.txt`
-- `screenshots/ubuntu-version.png`
-- `screenshots/apache-package-versions.png`
-- `screenshots/vsftpd-binary-verification.png`
-- `screenshots/proftpd-verification.png`
-- `screenshots/mysql-version-verification.png`
-- `screenshots/software-versions.png` (to be added)
+- [Nmap Service Version Scan](scans/nmap-service-versions.txt)
+- [Ubuntu Operating System Version](screenshots/ubuntu-version.png)
+- [Apache Package Version Verification](screenshots/apache-package-versions.png)
+- [vsftpd Binary Verification](screenshots/vsftpd-binary-verification.png)
+- [ProFTPD Verification](screenshots/proftpd-verification.png)
+- [MySQL Version Verification](screenshots/mysql-version-verification.png)
+- [PostgreSQL Package and Server Version Verification](screenshots/postgresql-version-verification.png)
+- [PostgreSQL Listener Verification](screenshots/postgresql-listener-verification.png)
+- [OpenSSH and OpenSSL Package Verification](screenshots/openssh-openssl-package-verification.png)
+- [OpenSSH Executable Version Verification](screenshots/openssh-executable-verification.png)
+- [SSH Weak-Key Tool Availability Verification](screenshots/openssh-weak-key-tool-availability.png)
 
 **References:**
 - `https://ubuntu.com/security/notices/USN-1199-1`
@@ -447,6 +452,9 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 - `https://nvd.nist.gov/vuln/detail/CVE-2011-2523`
 - `https://nvd.nist.gov/vuln/detail/CVE-2010-4652`
 - `https://ubuntu.com/security/notices/USN-671-1`
+- `https://ubuntu.com/security/notices/USN-612-1`
+- `https://ubuntu.com/security/notices/USN-612-2`
+- `https://ubuntu.com/security/notices/USN-753-1`
 
 **Overall Verification Status:** 
 
