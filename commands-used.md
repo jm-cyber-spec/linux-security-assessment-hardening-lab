@@ -440,7 +440,8 @@ Queries the running PostgreSQL server to retrieve its reported version.
 
 **Evidence:**
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
-- Local package, client, listener, and SQL-query outputs were inspected in the terminal. Screenshots have not yet been collected.
+- [PostgreSQL Package and Server Version Verification](screenshots/postgresql-version-verification.png)
+- [PostgreSQL Listener Verification](screenshots/postgresql-listener-verification.png)
 
 
 #### 4.11 OpenSSH Package and Security Verification
