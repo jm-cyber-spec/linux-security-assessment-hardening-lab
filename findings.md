@@ -358,9 +358,10 @@ Consequently, the strength of existing SSH host and authentication keys could no
 **Potential Impact:** If affected weak SSH keys are present, an attacker may be able to compromise SSH authentication or host identity verification.
 
 **Supporting Evidence:**
-- `scans/nmap-service-versions.txt`
-- Local OpenSSH/OpenSSL package and executable version outputs.
-- Local checks for the weak-key verification utility and blacklist packages.
+- [Nmap Service Version Scan](scans/nmap-service-versions.txt)
+- [OpenSSH and OpenSSL Package Verification](screenshots/openssh-openssl-package-verification.png)
+- [OpenSSH Executable Version Verification](screenshots/openssh-executable-verification.png)
+- [SSH Weak-Key Tool Availability Verification](screenshots/openssh-weak-key-tool-availability.png)
 
 **Verification Status:** Package versions and advisory comparisons were completed. Weak-key presence, manually applied patches, and exploitability were not independently verified. No exploitation or remediation was performed. 
 
@@ -428,7 +429,7 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 - vsftpd executable version and SHA-256 fingerprint (verified).
 - ProFTPD package, executable, configuration syntax, and listening-port verification (verified; configuration evidence screenshots pending).
 - MySQL package version, server executable version, listening-port verification, and security-advisory comparison (verified).
-- OpenSSH and OpenSSL package versions, executable version, and security advisory comparison (verified; screenshots pending). SSH weak-key assessment could not be completed because the verification utility was not found in the command search path.
+- OpenSSH and OpenSSL package versions, executable version, and security advisory comparison (verified). SSH weak-key assessment could not be completed because the verification utility was not found in the command search path.
 - PostgreSQL package, running-server version, and TCP listener verification screenshots have been collected. Patch applicability and exploitability remain unverified.
 
 **Evidence:**
