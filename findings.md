@@ -398,8 +398,9 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 **Potential Impact:** An affected PostgreSQL service could experience denial of service if the vulnerability's prerequisites are satisfied.
 
 **Supporting Evidence:**
-- `scans/nmap-service-versions.txt`
-- Local package, executable, SQL-query and listener outputs inspected in the terminal; screenshots not yet collected. 
+- [Nmap Service Version Scan](scans/nmap-service-versions.txt)
+- [PostgreSQL Package and Server Version Verification](screenshots/postgresql-version-verification.png)
+- [PostgreSQL Listener Verification](screenshots/postgresql-listener-verification.png)
 
 **Verification Status:** Installed package version, client version, running server version and listening service were verified. The package predates the documented Ubuntu security update. Manually applied patches and exploitability were not independently verified. No exploitation or remediation was performed.
 
@@ -428,7 +429,7 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 - ProFTPD package, executable, configuration syntax, and listening-port verification (verified; configuration evidence screenshots pending).
 - MySQL package version, server executable version, listening-port verification, and security-advisory comparison (verified).
 - OpenSSH and OpenSSL package versions, executable version, and security advisory comparison (verified; screenshots pending). SSH weak-key assessment could not be completed because the verification utility was not found in the command search path.
-- PostgreSQL package, client and running-server version, network listener inspection, and security-advisory comparison (verified; screenshots pending).
+- PostgreSQL package, running-server version, and TCP listener verification screenshots have been collected. Patch applicability and exploitability remain unverified.
 
 **Evidence:**
 - `scans/nmap-service-versions.txt`
