@@ -156,7 +156,7 @@ These commands were executed during the final documentation review, rather than 
 
 **Evidence:**
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
-- `ss` command results were verified in the target terminal. A screenshot of this verification has not yet been collected.
+- [Listening Network Sockets Verification](screenshots/ss-listening-ports-verification)
 
 ---
 
@@ -481,7 +481,9 @@ Checks the local package database for the specified blacklist packages. No match
 
 **Evidence:**
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
-- OpenSSH and OpenSSL package inspection, executable version inspection, and utility-availability checks were performed in the target terminal. Screenshots of these outputs have not yet been collected.
+- [OpenSSH and OpenSSL Package Verification](screenshots/openssh-openssl-package-verification.png)
+- [OpenSSH Executable Version Verification](screenshots/openssh-executable-verification.png)
+- [SSH Weak-Key Tool Availability Verification](screenshots/openssh-weak-key-tool-availability.png)
 
 **Security References:**
 - Ubuntu Security Notice USN-612-1
