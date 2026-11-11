@@ -423,7 +423,7 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 
 **Evidence Confidence:** Medium — Local package and executable inspections, network service verification, and official security advisory comparisons support the identified software version gaps. However, the applicability of certain CVEs, including those associated with vsftpd and ProFTPD, remains unconfirmed.
 
-**Assessment Limitations:** Exploitability was not independently tested. Manually applied security patches have not been ruled out. The vsftpd executable has not been compared against a trusted reference binary, ProFTPD vulnerability prerequisites remain unverified, and existing SSH keys were not assessed for weakness. No exploitability or remediation was performed. 
+**Assessment Limitations:** Exploitability was not independently tested. Manually applied security patches have not been ruled out. The vsftpd executable has not been compared against a trusted reference binary, ProFTPD vulnerability prerequisites remain unverified, and existing SSH keys were not assessed for weakness. No exploitation or remediation was performed. 
 
 **Overall Potential Impact:**
 
@@ -502,7 +502,11 @@ The assessment identified several privilege-separation concerns on the Metasploi
 - The `ingreslock` service is configured to launch `/bin/bash` with `root`.
 - The `root` and `msfadmin` accounts have password maximum age settings of 99,999 days, effectively allowing passwords to remain unchanged for an extended period.
 
-**Risk:** Provisional — further assessment required
+**Severity:** Undetermined (Provisional) — The `msfadmin` account has broad sudo privileges, and selected legacy services are configured to execute with root privileges. However, the available evidence does not establish whether these permissions are excessive relative to the intended administrative and service requirements.
+
+**Evidence Confidence:** Medium — The `sudo -l` output and legacy service configuration were inspected. However, effective privilege boundaries, service runtime privileges, and the necessity of the observed permissions were not comprehensively assessed.
+
+**Assessment Limitations:** The intended administrative role of `msfadmin`, complete sudo policy effective service privilege separation, and potential privilege escalation paths remain unverified. No privilege escalation or unauthorized access was attempted.
 
 **Potential Impact:** 
 - If one of these exposed services is compromised, its root-level execution context could allow an attacker to execute commands with administrative privileges.
