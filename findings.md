@@ -525,10 +525,12 @@ The assessment identified several privilege-separation concerns on the Metasploi
 - Sudo configuration and privileged group review.
 
 **Suggested Evidence:** 
-- `screenshots/sudo-privileges.png`
-- `screenshots/legacy-services-configuration.png`
-- `screenshots/permissions-audit.png` (to be added)
-- `screenshots/sudo-and-groups-review.png` (to be added)
+- [Sudo Privileges Verification](screenshots/sudo-privileges.png)
+- [Legacy Services Configuration](screenshots/legacy-services-configuration.png)
+
+**Additional Evidence Pending:**
+- Linux file and directory permission audit screenshots.
+- Sudo policy and privileged group membership verification screenshots. 
 
 **Verification Status:** 
 
