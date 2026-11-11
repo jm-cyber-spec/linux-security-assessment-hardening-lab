@@ -565,14 +565,15 @@ The sudo privileges and service configuration were inspected. No successful remo
 - Apply security updates where supported.
 - Refer to the CIS Linux Benchmarks where applicable.
 
-**Evidence Required:**
-- System configuration review.
-- Linux security hardening checklist.
-- Documentation of implemented security controls.
+**Supporting Documentation:**
+- [Security Findings And Assessment Summary](findings.md)
+- [Hardening Recommendations](hardening-recommednations.md)
 
-**Suggested Evidence:** 
-- `screenshots/hardening-checklist.png` (to be added)
-- `screenshots/hardening-validation.png` (to be added)
+**Future Validation Activities:** 
+- Develop a formal Linux hardening checklist based on an appropriate security benchmark.
+- Implement approved hardening measures in a controlled test environment.
+- Capture configuration evidence before and after remediation.
+- Verify that implemented controls are effective and document the results. 
 
 **Verification Status:** Recommendations documented; implementation and post-remediation validation not performed.
 
