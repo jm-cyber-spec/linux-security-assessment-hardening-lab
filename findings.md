@@ -102,7 +102,7 @@ An authentication configuration review of the Metasploitable2 target ("192.168.5
 **Suggested Evidence:**
 - [Password Aging Policy](screenshots/password-aging-policy.png)
 - [Password Policy Configuration](screenshots/password-policy-configuration.png)
-- [Autentication Configuration](screenshots/authentication-configuration.png)
+- [Authentication Configuration](screenshots/authentication-configuration.png)
 
 **Verification Status:**
 Password status, password-aging settings, and selected PAM configuration files were inspected. Actual password strength, default credential usage, account-lockout behavior across all authentication services, and existing password hash formats were not verified. No password guessing or exploitation was performed.
@@ -147,7 +147,6 @@ These observations provide additional evidence of legacy network service exposur
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
 - [Legacy Services Configuration](screenshots/legacy-services-configuration.png)
 - [Listening Network Sockets Verification](screenshots/ss-listening-ports-verification.png)
-- `screenshots/service-enumeration.png` (to be added)
 
 **Verification Status:** Nmap identified 22 open TCP ports. Local process and listener inspection confirmed `xinetd` running as root and listening on TCP ports 512-514. The legacy service entries in `/etc/inetd.conf` were also verified. No exploitation or remediation was performed.
 
