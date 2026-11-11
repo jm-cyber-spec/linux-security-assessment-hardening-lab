@@ -566,8 +566,8 @@ The sudo privileges and service configuration were inspected. No successful remo
 - Refer to the CIS Linux Benchmarks where applicable.
 
 **Supporting Documentation:**
-- [Security Findings And Assessment Summary](findings.md)
-- [Hardening Recommendations](hardening-recommednations.md)
+- [Security Findings And Assessment Summary](#4-assessment-summary)
+- [Hardening Recommendations](hardening-recommendations.md)
 
 **Future Validation Activities:** 
 - Develop a formal Linux hardening checklist based on an appropriate security benchmark.
