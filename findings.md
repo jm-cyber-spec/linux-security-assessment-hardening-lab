@@ -578,22 +578,30 @@ The sudo privileges and service configuration were inspected. No successful remo
 
 ## 4. Assessment Summary
 
-The assessment identified six security areas requiring investigation and potential remediation.
+The controlled educational security assessment examined six security areas on the Metasploitable2 (Target VM) and identified exposed legacy network services, authentication and password-policy concerns, software security-update gaps and privilege management configurations requiring further review. Security hardening recommendations were documented separately.
 
+| Finding | Security Area | Severity | Evidence Confidence |
+|---------|---------------|----------|---------------------|
+| F-01 | Telnet Service Exposure | Medium | High |
+| F-02 | Authentication and Password Policy | Medium | Medium |
+| F-03 | Excessive Network Service Exposure | Medium | High |
+| F-04 | Potentially Outdated Software | Medium (Provisional) | Medium |
+| F-05 | Privilege Separation | Undetermined (Provisional) | Medium |
+| F-06 | Security Hardening Baseline | Not Separately Rated | Not Applicable |
 
-These include:
-- Legacy network protocols
-- Authentication weaknesses
-- Network service exposure
-- Software maintenance
-- Privilege separation
-- Linux security hardening and monitoring
+**Overall Assessment:**
 
-Several observations remain provisional or unverified pending collection of supporting technical evidence. 
+Severity classifications have been assigned where supported by the available evidence. These ratings reflect the isolated lab environment and may differ from those applicable to production systems.
 
-Final risk classifications will be assigned after the relevant findings have been verified.
+F-04 remains provisional because certain vulnerability prerequisites, patch applicability, and exploitability have not been fully verified.
 
-Overall Assessment Status: In Progress
+F-05 remains provisional because the intended administrative privileges and effective service privilege boundaries require further investigation.
+
+F-06 consolidates security hardening recommendations and does not represent an additional independently verified vulnerability.
+
+No exploitation, security remediation, or post-remediation validation was performed during this assessment.
+
+**Overall Assessment Status:** Initial assessment and risk classification completed; selected technical verification and remediation activities remain pending. 
 
 ## 5. Assessment Limitations
 
