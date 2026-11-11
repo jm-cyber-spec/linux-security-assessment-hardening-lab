@@ -200,8 +200,8 @@ The installed package predates the documented security update.
 The package comparison supports a finding of a missing documented security update. Exploitability has not been tested, and manually applied patches have not been ruled out.
 
 **Supporting Evidence:**
-- `screenshots/ubuntu-version.png`
-- `screenshots/apache-package-versions.png`
+- [Ubuntu Operating System Version](screenshots/ubuntu-version.png)
+- [Apache Package Version Verification](screenshots/apache-package-versions.png)
 
 
 #### F-04.2 — vsftpd 2.3.4: Binary Verification
@@ -233,7 +233,7 @@ The SHA-256 hash was collected to identify the exact executable examined.
 The reported version alone does not establish that the backdoor is present. The executable has not been matched against a trusted reference binary, and no exploitation was performed.
 
 **Supporting Evidence:**
-- `screenshots/vsftpd-binary-verification.png`
+- [vsftpd Binary Verification](screenshots/vsftpd-binary-verification.png)
 
 
 #### F-04.3 — ProFTPD 1.3.1: Service and Configuration Verification
@@ -267,8 +267,8 @@ A search of `/etc/proftpd/` did not identify uncommented SQL authentication or d
 If an applicable vulnerability is present and its prerequisites are satisfied, the FTP service could expose the system to unauthorized access, service disruption, or other security consequences depending on the specific vulnerability. 
 
 **Supporting Evidence:**
-- `scans/nmap-service-versions.txt`
-- `screenshots/proftpd-verification.png`
+- [Nmap Service Version Scan](scans/nmap-service-versions.txt)
+- [ProFTPD Verification](screenshots/proftpd-verification.png)
 - Additional configuration inspection results (Verified in terminal; screenshots not yet collected).
 
 **Verification Status:**
@@ -324,8 +324,8 @@ The documented vulnerabilities include:
 Actual exploitability depends on the affected functionality, user privileges, configuration, and applicable security fixes.
 
 **Supporting Evidence:**
-- `scans/nmap-service-versions.txt`
-- `screenshots/mysql-version-verification.png`
+- [Nmap Service Version Scan](scans/nmap-service-versions.txt)
+- [MySQL Version Verification](screenshots/mysql-version-verification.png)
 
 **Verification Status:**
 - The installed MySQL package version, server executable version, and listening service (verified).
@@ -419,7 +419,11 @@ CVE-2009-0922 concerns a potential denial of service condition involving Postgre
 
 **OpenSSH Verification Status:** Installed OpenSSH and OpenSSL package versions were verified and compared against Ubuntu Security Notices USN-612-1 and USN-612-2. The installed OpenSSH package predates the documented security update. Existing SSH keys were not assessed for weakness, and manually applied patches and exploitability remain unverified.
 
-**Overall Risk:** Provisional — patch applicability and exploitability remain unverified.
+**Overall Severity:** Medium (Provisional) — Several network facing software components have installed package versions that predate documented Ubuntu security updates. These potential weaknesses increase the system's attack surface, although exposure is limited to the isolated Host-Only lab. The severity may change following further verification of patch applicability, configuration, and exploitability.
+
+**Evidence Confidence:** Medium — Local package and executable inspections, network service verification, and official security advisory comparisons support the identified software version gaps. However, the applicability of certain CVEs, including those associated with vsftpd and ProFTPD, remains unconfirmed.
+
+**Assessment Limitations:** Exploitability was not independently tested. Manually applied security patches have not been ruled out. The vsftpd executable has not been compared against a trusted reference binary, ProFTPD vulnerability prerequisites remain unverified, and existing SSH keys were not assessed for weakness. No exploitability or remediation was performed. 
 
 **Overall Potential Impact:**
 
