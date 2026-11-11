@@ -506,7 +506,7 @@ The assessment identified several privilege-separation concerns on the Metasploi
 
 **Evidence Confidence:** Medium — The `sudo -l` output and legacy service configuration were inspected. However, effective privilege boundaries, service runtime privileges, and the necessity of the observed permissions were not comprehensively assessed.
 
-**Assessment Limitations:** The intended administrative role of `msfadmin`, complete sudo policy effective service privilege separation, and potential privilege escalation paths remain unverified. No privilege escalation or unauthorized access was attempted.
+**Assessment Limitations:** The intended administrative role of `msfadmin`, complete sudo policy, effective service privilege separation, and potential privilege escalation paths remain unverified. No privilege escalation or unauthorized access was attempted.
 
 **Potential Impact:** 
 - If one of these exposed services is compromised, its root-level execution context could allow an attacker to execute commands with administrative privileges.
@@ -546,7 +546,11 @@ The sudo privileges and service configuration were inspected. No successful remo
 - Linux permissions
 - Access restrictions and logging
 
-**Risk:** Overall posture not yet formally assessed
+**Severity:** Not Separately Rated — This section consolidates hardening recommendations arising from the preceding findings rather than documenting an additional independently verified vulnerability.
+
+**Evidence Confidence:** Not Applicable — The recommendations are informed by the preceding assessments, whose evidence confidence is documented individually.
+
+**Assessment Limitations:** No hardening changes were implemented or validated during this assessment. The completeness of the proposed baseline against a formal security benchmark was not evaluated.
 
 **Potential Impact:** 
 - Missing or inconsistent security controls may increase the likelihood and impact of unauthorized access.
@@ -568,7 +572,7 @@ The sudo privileges and service configuration were inspected. No successful remo
 - `screenshots/hardening-checklist.png` (to be added)
 - `screenshots/hardening-validation.png` (to be added)
 
-**Verification Status:** Pending Review
+**Verification Status:** Recommendations documented; implementation and post-remediation validation not performed.
 
 ---
 
