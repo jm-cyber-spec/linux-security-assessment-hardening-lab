@@ -84,7 +84,9 @@ This architecture demonstrates several important security principles:
 - `ps` and `netstat` — Process and network-listener inspection.
 - Configuration file inspection — Authentication, legacy services, and application configuration reviews.
 
-Commands such as `ss`, `systemctl`, and `journalctl` are documented as reference commands where execution was not confirmed.
+The `ss` utility was confirmed available and successfully executed on Metasploitable2 during the documentation review to inspect listening network sockets.
+
+The `systemctl`, and `journalctl` commands were not used because Metasploitable2 runs Ubuntu 8.04, which predates systemd. The corresponding entries in `commands-used.md` are retained only as reserved section references.
 
 See [Commands Used](commands-used.md) for the commands documented during this assessment.
 
