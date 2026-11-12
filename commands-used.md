@@ -450,7 +450,7 @@ sudo -u postgres psql -c "SELECT version();"
 ```
 Queries the running PostgreSQL server to retrieve its reported version.
 
-**Related Findings:** F-04.5 — PostgreSQL Security Update Assessment.
+**Related Findings:** F-04.6 — PostgreSQL Security Update Assessment.
 
 **Evidence:**
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
