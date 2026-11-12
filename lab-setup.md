@@ -86,7 +86,7 @@ This architecture demonstrates several important security principles:
 
 The `ss` utility was confirmed available and successfully executed on Metasploitable2 during the documentation review to inspect listening network sockets.
 
-The `systemctl`, and `journalctl` commands were not used because Metasploitable2 runs Ubuntu 8.04, which predates systemd. The corresponding entries in `commands-used.md` are retained only as reserved section references.
+The `systemctl` and `journalctl` commands were not used because Metasploitable2 runs Ubuntu 8.04, which predates systemd. The corresponding entries in `commands-used.md` are retained only as reserved section references.
 
 See [Commands Used](commands-used.md) for the commands documented during this assessment.
 
