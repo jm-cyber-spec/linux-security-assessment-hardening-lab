@@ -128,6 +128,8 @@ These recommendations are proposed actions and should not be considered implemen
 
 ### 3. Recommended Priorities
 
+**Priority Assessment:** The priorities below indicate the suggested order for investigating and implementing defensive improvements. They are distinct from the finding severity ratings in `findings.md`, which describe the assessed security risk. Remediation priority may also depend on service necessity, operational impact, and available resources.
+
 | Priority | Recommended Action |
 | -- | -- |
 | High | Disable unnecessary insecure remote access protocols |
