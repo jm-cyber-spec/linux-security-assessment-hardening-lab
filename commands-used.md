@@ -24,6 +24,8 @@ All assessment activities were performed within the authorized local VirtualBox 
 
 #### 2.1 Identify Network Interfaces
 
+**Executed on:** Kali Linux (Analyst VM)
+
 ```
 ip a
 ```
@@ -33,6 +35,8 @@ ip a
 **Usage:** Helps identify the Kali Linux Host-only network interface and verify its network configuration.
 
 #### 2.2 Check Network Connectivity
+
+**Executed on:** Kali Linux (Analyst VM)
 
 ```
 ping -c 4 192.168.56.104
@@ -44,6 +48,8 @@ ping -c 4 192.168.56.104
 
 #### 2.3 Scan Target Ports Using Nmap
 
+**Executed on:** Kali Linux (Analyst VM)
+
 ```
 nmap 192.168.56.104
 ```
@@ -52,7 +58,11 @@ nmap 192.168.56.104
 
 **Usage:** Identifies accessible ports on the target machine.
 
+**Evidence:** No separate output file was retained for this basic scan. The saved service-version scan is documented in Section 2.5.
+
 #### 2.4 Detect Service Versions
+
+**Executed on:** Kali Linux (Analyst VM)
 
 ```
 nmap -sV 192.168.56.104
@@ -61,6 +71,8 @@ nmap -sV 192.168.56.104
 **Purpose:** Attempts to identify services and their versions on discovered ports.
 
 **Usage:** Helps document exposed services and investigate potentially outdated software.
+
+**Evidence:** [Nmap Service Version Scan](scans/nmap-service-versions.txt)
 
 #### 2.5 Save Nmap Results
 
