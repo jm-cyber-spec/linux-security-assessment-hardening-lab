@@ -75,20 +75,23 @@ No exploitation or remediation was performed as part of the documented assessmen
 
 ## Current Status
 
-**Status:** Security assessment and documentation in progress.
+**Status:** Initial security assessment and risk classification completed. Selected verification and documentation improvements remain pending.
 
 **Completed:**
 - Network discovery and service-version scanning.
-- Inspection of legacy services and authentication.
-- Initial privilege and file-permission assessment.
-- Selected software package and security-advisory comparisons.
-- Documentation of findings and supporting evidence.
+- Inspection of legacy services and authentication configurations, and Linux privileges.
+- Selected software package verification and security-advisory comparisons.
+- Documentation of six security findings, including severity and evidence-confidence assessments.
+- Collection and linking of supporting scan outputs and selected screenshots.
+- Initial documentation consistency review.
 
 **Pending:**
 - Further verification of selected authentication and privilege-related observations.
-- Collection of remaining supporting screenshots for completed terminal inspections.
-- Final repository documentation consistency review.
-- Controlled hardening and remediation validation, if undertaken.
+- Confirmation of vulnerability applicability for selected software components.
+- Final evidence-file and documentation link audit.
+- Controlled hardening and post-remediation validation, if undertaken.
+
+No exploitation or remediation was performed during the documented assessment.
 
 This repository is being developed as a cybersecurity learning and portfolio project.
 
