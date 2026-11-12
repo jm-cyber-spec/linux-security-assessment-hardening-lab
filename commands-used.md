@@ -104,15 +104,9 @@ ls -l
 
 **Purpose:** Lists files in the current directory, including their permissions, ownership, and other file details.
 
-#### 3.4 Review Directory Permissions
+#### 3.4 Directory Permission Inspection — Not Performed
 
-```
-ls -ld /path/to/directory
-```
-
-**Purpose:** Displays permissions and ownership of a specified directory.
-
-**Note:** **/path/to/directory** is a placeholder (reference command). Replace it with the actual directory path when performing the assessment.
+No separate directory-specific permission inspection was documented during this assessment. File permission checks are recorded in Sections 3.3 and 4.9.
 
 #### 3.5 Review Running Processes
 
