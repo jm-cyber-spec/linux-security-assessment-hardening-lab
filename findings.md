@@ -333,7 +333,7 @@ Actual exploitability depends on the affected functionality, user privileges, co
 - No exploitation or remediation was performed.
 
 
-#### F-04.5 — OpenSSH and PostgreSQL Security Update Assessments
+#### F-04.5 — OpenSSH Security Update Assessment
 
 **OpenSSH:** Security Update Assessment.
 
@@ -378,7 +378,7 @@ Consequently, the strength of existing SSH host and authentication keys could no
 **Verification Status:** Package versions and advisory comparisons were completed. Weak-key presence, manually applied patches, and exploitability were not independently verified. No exploitation or remediation was performed. 
 
 
-**PostgreSQL 8.3:** Security Update Assessment
+#### F-04.6 — PostgreSQL 8.3: Security Update Assessment
 
 **Service:** PostgreSQL (TCP port 5432)
 
