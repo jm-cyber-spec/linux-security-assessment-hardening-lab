@@ -94,6 +94,8 @@ nmap -sV 192.168.56.104 -oN ~/nmap-service-versions.txt
 
 #### 3.1 Identify Current User
 
+**Executed on:** Metasploitable2 (Target VM)
+
 ```
 whoami
 ```
@@ -102,6 +104,8 @@ whoami
 
 #### 3.2 Display User and Group Information
 
+**Executed on:** Metasploitable2 (Target VM)
+
 ```
 id
 ```
@@ -109,6 +113,8 @@ id
 **Purpose:** Displays the current user's UID, GID, and group memberships.
 
 #### 3.3 Review File Permissions
+
+**Executed on:** Metasploitable2 (Target VM)
 
 ```
 ls -l
@@ -121,6 +127,8 @@ ls -l
 No separate directory-specific permission inspection was documented during this assessment. File permission checks are recorded in Sections 3.3 and 4.9.
 
 #### 3.5 Review Running Processes
+
+**Executed on:** Metasploitable2 (Target VM)
 
 ```
 ps aux
