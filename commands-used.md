@@ -514,11 +514,12 @@ Checks the local package database for the specified blacklist packages. No match
 
 ### 6. Evidence and Results
 
-The following scan output and screenshots were collected during the Linux Security Assessment and Hardening Lab.
+The following scan output and screenshots were collected during the Linux Security Assessment and Hardening Lab, including subsequent documentation verification.
 
 **Network Scanning**
 
 - [Nmap Service Version Scan](scans/nmap-service-versions.txt)
+- [Listening Network Sockets Verification](screenshots/ss-listening-ports-verification.png)
 
 **Service and Configuration Inspection**
 
@@ -528,6 +529,11 @@ The following scan output and screenshots were collected during the Linux Securi
 - [vsftpd Binary Verification](screenshots/vsftpd-binary-verification.png)
 - [ProFTPD Verification](screenshots/proftpd-verification.png)
 - [MySQL Version Verification](screenshots/mysql-version-verification.png)
+- [PostgreSQL Package and Server Version Verification](screenshots/postgresql-version-verification.png)
+- [PostgreSQL Listener Verification](screenshots/postgresql-listener-verification.png)
+- [OpenSSH and OpenSSL Package Verification](screenshots/openssh-openssl-package-verification.png)
+- [OpenSSH Executable Version Verification](screenshots/openssh-executable-verification.png)
+- [SSH Weak-Key Tool Availability Verification](screenshots/openssh-weak-key-tool-availability.png)
 
 **Authentication and Privilege Inspection**
 
@@ -536,9 +542,11 @@ The following scan output and screenshots were collected during the Linux Securi
 - [Password Policy Configuration](screenshots/password-policy-configuration.png)
 - [Authentication Configuration](screenshots/authentication-configuration.png)
 
-Detailed observations, security implications, and verification limitations are documented in `findings.md`.
+Detailed observations, security implications, and verification limitations are documented in [Findings](findings.md).
 
-Hardening recommendations are documented in `hardening-recommendations.md`.
+Proposed hardening recommendations are documented in [Hardening Recommendations](hardening-recommendations.md).
+
+No exploitation or remediation was performed.
 
 ---
 
