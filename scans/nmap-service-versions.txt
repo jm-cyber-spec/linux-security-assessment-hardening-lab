@@ -1,4 +1,4 @@
-# Nmap 7.991 scan initiated Sat Oct 31 18:30:03 2026 as: /usr/lib/nmap/nmap --privileged -sV -oN /home/emjaykm/nmap-service-versions.txt 192.168.56.104
+# Nmap 7.991 scan initiated Sat Oct 31 18:30:03 2026 as: /usr/lib/nmap/nmap --privileged -sV -oN /home/[REDACTED]/nmap-service-versions.txt 192.168.56.104
 Nmap scan report for 192.168.56.104
 Host is up (0.0011s latency).
 Not shown: 978 closed tcp ports (reset)
