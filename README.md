@@ -75,25 +75,25 @@ No exploitation or remediation was performed as part of the documented assessmen
 
 ## Current Status
 
-**Status:** Initial security assessment and risk classification completed. Selected verification and documentation improvements remain pending.
+**Status:** Initial security assessment and evidence documentation completed. Further technical verification and remediation validation remain outside the completed scope.
 
 **Completed:**
 - Network discovery and service-version scanning.
-- Inspection of legacy services and authentication configurations, and Linux privileges.
-- Selected software package verification and security-advisory comparisons.
-- Documentation of six security findings, including severity and evidence-confidence assessments.
-- Collection and linking of supporting scan outputs and selected screenshots.
-- Initial documentation consistency review.
+- Inspection of legacy services and authentication configurations, and user privileges.
+- Initial file permission and privilege-separation assessment.
+- Selected software package-version verification and security-advisory comparisons.
+- Documentation of security findings, severity assessments, evidence confidence, and verification limitations.
+- Review of repository documentation and supporting evidence filenames.
+- Visual Inspection of all 17 saved screenshots for consistency with documented observations.
 
-**Pending:**
+**Pending/Future Work:**
 - Further verification of selected authentication and privilege-related observations.
-- Confirmation of vulnerability applicability for selected software components.
-- Final evidence-file and documentation link audit.
-- Controlled hardening and post-remediation validation, if undertaken.
+- Additional investigation of software vulnerability applicability and SSH key security.
+- Controlled implementation and validation of hardening recommendations, if undertaken.
 
-No exploitation or remediation was performed during the documented assessment.
+The repository represents a documented defensive security assessment of an intentionally vulnerable Linux system. No exploitation or remediation was performed as part of the completed assessment.
 
-This repository is being developed as a cybersecurity learning and portfolio project.
+This project serves as a practical cybersecurity learning exercise and portfolio demonstration.
 
 ## Learning Outcomes
 
